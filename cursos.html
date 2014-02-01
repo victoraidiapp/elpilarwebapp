@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUTOESCUELAS EL PILAR</title>
+<link href="js/jquery.mobile-1.4.0.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="js/themes/elPilar.min.css" />
+<link rel="stylesheet" href="js/themes/jquery.mobile.icons.min.css" />
+
+<!--<link href="js/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css">-->
+<link href="js/style.css" rel="stylesheet" type="text/css">
+
+ 
+<script type="text/javascript" src="js/jquery.js"></script>
+
+<script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+<script type="text/javascript" src="js/responsiveslides.min.js"></script>
+
+<script type="text/javascript" src="js/funciones.js"></script>
+<script>
+
+$(function() {
+				
+			$( "[data-role='header'], [data-role='footer']" ).toolbar();
+	
+			obtenerCursos();
+			
+			jQuery("#mascursos").on('tap',function(){
+				console.log("has picado en mascursos");
+					
+				obtenerCursos();
+				
+			})	
+			
+			$('.popupp').click(function() {
+
+   					$('.verpopup').popup();
+   					$('.verpopup').popup("open");
+			});					
+		});
+
+</script>
+</head>
+
+<body>
+
+
+    
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1></h1>
+    <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu" data-role="button" role="button">Menu</a>
+ 	<a  href="#popupMap" data-rel="popup" data-position-to="window" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
+	<div data-role="popup" id="popupMap" data-overlay-theme="a" data-theme="a" data-corners="false" data-tolerance="15,15">
+    <a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+    <iframe src="http://www.testbook.es/users" width="480" height="400" seamless=""></iframe>
+</div>
+    </div>
+    
+<div data-role="page" id="miscursillos">
+	<div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
+	
+   
+    
+    	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="index.html"  data-ajax="false" data-transition="fade" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="cursos.html"  data-ajax="false"  data-transition="fade" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="intensivos.html"  data-ajax="false" data-transition="fade" >Intensivos</a></li>    
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
+                
+             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
+             
+             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
+              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="avisos.html"  data-ajax="false" data-transition="fade" >Avisos</a></li>
+     
+          
+        </ul>
+    
+    </div>
+    <div id="container" data-role="content">
+    	
+       <div id="cursillos">
+        
+        </div>
+        <div  id="mascursos" class="boton mostrarcargando">Más cursos</div>
+        
+   </div>
+			
+</div>
+</body>
+
+</html>
+
+
+	
+
+    
+
+    
+
