@@ -325,9 +325,10 @@ $(document).delegate('#navmenu a','tap',function(){
             
     });
 	urldest=$(this).attr('href');
-	$('#container').fadeOut('fast');
+	//$('#container').fadeOut('fast');
 	//alert("Espero a ver si se ha quitado");
 	$.mobile.navigate(urldest);
+	alterContent(urldest);
 	//$( ":mobile-pagecontainer" ).pagecontainer( "change", urldest, { transition: "fade" } );
 return false;
 			})
