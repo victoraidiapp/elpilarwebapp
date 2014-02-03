@@ -14,7 +14,7 @@ autoescuelas el pilar
 Victor&Rocio
 </author>
 
-<access origin="http://autoescuelaselpilar.com" subdomains="true" />
+<access origin="*" subdomains="true" />
 
 <preference name="permissions" value="none"/>
 
