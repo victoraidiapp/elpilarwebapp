@@ -316,6 +316,13 @@ jQuery("#envio").click(function(){
 			}
 			})
 });
-
-
+$(document).delegate('#navmenu a','tap',function(){
+								 $.mobile.loading( "show", {
+            text: "Cargando sección...",
+            textVisible: true,
+            theme: "a",
+            textonly: false,
+            
+    });
+			})
 	 
