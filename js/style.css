@@ -183,11 +183,10 @@ a.avis{
  }
  
  .ui-popup-container.pop.in.ui-popup-active{
-
-		position:fixed!important;
-		top:50px!important;
-		left:20px!important;
-	 
+	position: fixed!important;
+	top: 50px!important;
+	height: 95%!important;
+	overflow: scroll;	 
  }
  .miimg{
 	 margin:1%;
