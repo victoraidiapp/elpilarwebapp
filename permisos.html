@@ -40,6 +40,15 @@ $(function() {
 				
 			});		
 			
+			$('#navmenu a').on('tap',function(){
+								 $.mobile.loading( "show", {
+            text: "Cargando sección...",
+            textVisible: true,
+            theme: "a",
+            textonly: false,
+            
+    });
+			})
 		
 		});
 
