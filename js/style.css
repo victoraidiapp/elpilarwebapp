@@ -131,7 +131,7 @@ background:#222222 url(images/minus.png) 85% 55% no-repeat;
 width: 40%;
 }
 li.ui-block-a, li.ui-block-b, li.ui-block-c, li.ui-block-d, li.ui-block-e {
-	margin: 5px;
+	margin: 3px;
 
 border-radius:10px;
 	
@@ -182,9 +182,7 @@ a.avis{
 	color:#90bc00;
  }
  .verpopup{
-	overflow-y: scroll;
-	position: fixed;
-	top: 50px;
+	
 	
 	 
  }
