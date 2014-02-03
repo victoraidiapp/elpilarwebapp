@@ -181,9 +181,12 @@ a.avis{
 	font-size: 30px!important;
 	color:#90bc00;
  }
- .verpopup{
-	
-	
+ 
+ .ui-popup-container.pop.in.ui-popup-active{
+
+		position:fixed!important;
+		top:50px!important;
+		left:20px!important;
 	 
  }
  .miimg{
