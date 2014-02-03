@@ -191,8 +191,7 @@ a.avis{
 	 width:20%;
  }
  #gallery{
-	 margin-bottom:50px;
-	 min-height:400px;
+	
  }
  .popphoto{
 	 margin-right:10px;
@@ -291,4 +290,7 @@ a.avis{
 }
 .contenidos{
 	color:#000;
+}
+#masgalerias{
+	margin-top:20px;
 }
