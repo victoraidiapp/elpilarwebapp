@@ -128,10 +128,10 @@ background:#222222 url(images/minus.png) 85% 55% no-repeat;
 }
 
 .ui-grid-a > .ui-block-a, .ui-grid-a > .ui-block-b {
-width: 40%;
+width: 48%;
 }
 li.ui-block-a, li.ui-block-b, li.ui-block-c, li.ui-block-d, li.ui-block-e {
-	margin: 3px;
+	margin: 1%;
 
 border-radius:10px;
 	
