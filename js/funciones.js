@@ -123,7 +123,7 @@ function obtenerCursos() {
 			+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'</div>');
 						}
-						$('.verpopup').css('overflow-y', 'scroll');
+						
 						pagesCurso++;
 						$('#miscursillos').trigger('create');
 					}
@@ -165,7 +165,7 @@ function obtenerAvisos() {
 			+'<div data-role="popup" id="'+misavisos[aviso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p class="no_enlace">'+misavisos[aviso].content+'</p></div>'
 			+'</div>');
 						}
-						$('.verpopup').css('overflow-y', 'scroll'); 
+						
 						
 						pagess++;
 						$('#avisillos').trigger('create');
