@@ -325,10 +325,11 @@ $(document).delegate('#navmenu a','tap',function(){
             
     });
 	urldest=$(this).attr('href');
+	window.location.href=urldest;
 	//$('#container').fadeOut('fast');
 	//alert("Espero a ver si se ha quitado");
-	$.mobile.navigate(urldest);
-	alterContent(urldest);
+	//$.mobile.navigate(urldest);
+	//alterContent(urldest);
 	//$( ":mobile-pagecontainer" ).pagecontainer( "change", urldest, { transition: "fade" } );
 return false;
 			})

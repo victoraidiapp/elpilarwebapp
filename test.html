@@ -20,58 +20,35 @@
 <script type="text/javascript" src="js/funciones.js"></script>
 <script>
 
-
 $(function() {
 				
 			$( "[data-role='header'], [data-role='footer']" ).toolbar();
-			
-					
-		
-			obtenerAvisos();
-			
-			jQuery("#masavisos").on('tap',function(){
-				console.log("has picado en masavisos");
-				
-				
-				obtenerAvisos();
-			
-		
-			})	
-			var maxHeight = $(window).height() - 30;
-			console.log("mi altura maxima es "+maxHeight);
-    		$('.verpopup').css('max-height', maxHeight + 'px');
-			
-			$('.popupp').click(function() {
-
-   					$('.verpopup').popup();
-					
-   					$('.verpopup').popup("open");
-			});		
-			
-				
-		});
 	
+		});
 
 </script>
 </head>
 
 <body>
+
+
+    
     <div data-role="header" data-position="fixed" data-theme="a">
-   		<h1></h1>
-    <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu"  data-role="button" role="button">Menu</a>
-    <a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
+   	<h1></h1>
+    <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu" data-role="button" role="button">Menu</a>
+ 	<a  href="test.html" data-ajax="false"  class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
 	
-   
     </div>
-<div data-role="page" id="avisillos">
+    
+<div data-role="page" id="popupMap">
 	<div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
 	
    
     
     	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
        		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="index.html"  data-ajax="false" data-transition="fade" >Home</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="permisos.html"  data-ajax="false" data-transition="fade" >Permisos</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="intensivos.html"  data-ajax="false" data-transition="fade" >Cursos</a></li>    
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="cursos.html"  data-ajax="false"  data-transition="fade" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="intensivos.html"  data-ajax="false" data-transition="fade" >Intensivos</a></li>    
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
                 
              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
@@ -83,16 +60,22 @@ $(function() {
         </ul>
     
     </div>
-    
-
-    <div id="#container" data-role="content">
+    <div id="container" data-role="content" style="height:100%;">
     	
-    	<div id="tablon">
-        
-        </div>
-        <div  id="masavisos" class="boton">Más avisos</div>
+        	<iframe src="http://www.testbook.es/users" width="100%" height="100%" allowfullscreen></iframe>
+  
         
    </div>
+			
 </div>
 </body>
+
 </html>
+
+
+	
+
+    
+
+    
+
