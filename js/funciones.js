@@ -125,7 +125,7 @@ function obtenerCursos() {
 						}
 						
 						pagesCurso++;
-						$('#miscursillos').trigger('create');
+					//	$('#miscursillos').trigger('create');
 					}
 		})
 		
