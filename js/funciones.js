@@ -14,7 +14,7 @@ function obtenerImagenes(){
 				var data = {
 				};
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/imgslideapp", data, function(objjson1) {
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/imgslideapp/", data, function(objjson1) {
 		console.log('El servidor me ha dicho: ' + objjson1);
 				//$resultado=array('status'=>'ok',imagenes=>array['titulo'=>$titulo,'url'=>$url,];				
 					if(objjson1.status=="ok"){
@@ -70,7 +70,7 @@ function obtenerGaleria() {
 				};
 				
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getImgGaleria", data, function(objjson8) {
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getImgGaleria/", data, function(objjson8) {
 		console.log('El servidor me ha dicho: ' + objjson8);
 				 $.mobile.loading("hide");
 					if(objjson8.status=="ok"){
@@ -101,14 +101,14 @@ function obtenerCursos() {
             textonly: false,
             
     });
-							var data = {
+			var data = {
 					type:'wpsc-product',
 					count:10,
 					page:pagesCurso
 				};
 				
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_products", data, function(objjson5) {
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_products/", data, function(objjson5) {
 		console.log('El servidor me ha dicho: ' + objjson5);
 				 $.mobile.loading("hide");
 					if(objjson5.status=="ok"){
@@ -120,7 +120,7 @@ function obtenerCursos() {
 			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop"><img class="left" width="100px"  src="'+miscursos[curso].thumbnail+'"/></a>'
 			+'<div class="tit_curso">'
 			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
-			+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
+			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'</div>');
 						}
 						
@@ -150,7 +150,7 @@ function obtenerAvisos() {
 					page:pagess
 				};
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_category_posts", data, function(objjson4) {
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_category_posts/", data, function(objjson4) {
 		console.log('El servidor me ha dicho: ' + objjson4);
 								 $.mobile.loading( "hide");
 					if(objjson4.status=="ok"){
@@ -192,7 +192,7 @@ function obtenerAvisos() {
 				};
 				
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getNextCourses", data, function(objjson10) {
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getNextCourses/", data, function(objjson10) {
 		console.log('El servidor me ha dicho: ' + objjson10);
 				 $.mobile.loading("hide");
 					if(objjson10.status=="ok"){
@@ -264,7 +264,7 @@ function obtenerClientes() {
 				};
 				
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_Promotion_Categories", data, function(objjson9) {
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_Promotion_Categories/", data, function(objjson9) {
 		console.log('El servidor me ha dicho: ' + objjson9);
 				 $.mobile.loading("hide");
 					if(objjson9.status=="ok"){
@@ -307,7 +307,7 @@ jQuery("#envio").click(function(){
 		
 		console.log(nombre+email+tema+mensaje);
 		
-	jQuery.post( "www.autoescuelaselpilar.com/api/dudasfromapp", data, function(response) {
+	jQuery.post( "www.autoescuelaselpilar.com/api/dudasfromapp/", data, function(response) {
 		console.log('El servidor me ha dicho: ' + response);
 			if(response.status=="error"){
 				alert(response.error);
