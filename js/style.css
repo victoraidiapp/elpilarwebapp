@@ -176,6 +176,17 @@ a.avis{
 	text-align: center;
 	clear: both;
 }
+.botoncito{
+	background-color: #90bc00;
+	width: 20%;
+	height: 25px;
+	border: thin solid #90bc00;
+	border-radius: 20px;
+	text-align: center;
+	float:right;
+	margin-bottom:20px;
+	
+}
 .tit_curso{
 	margin-left: 130px;#
 	font-size: 30px!important;
@@ -295,4 +306,16 @@ a.avis{
 }
 #masgalerias{
 	margin-top:20px;
+}
+.no_visible{
+	display:none;
+}
+.popupp{
+cursor: pointer;
+}
+.popy{
+	border: medium solid #90bc00;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;
 }

@@ -33,12 +33,29 @@ $(function() {
 				
 			})	
 			
-			$('.popupp').click(function() {
+			jQuery(document).delegate('.popupp','tap',function(){
+				console.log("has picado en popupp");
+					var miid=$(this).data('iden');
+						$("#cursillos").addClass('no_visible');
+						$("#mascursos").addClass('no_visible');
+						$(".popy .up").html('<p>'+miscursos[miid].content+'</p>');
+						$(".popy").removeClass('no_visible')
+			})
+			jQuery(document).delegate('#atras','tap',function(){
+				console.log("has picado en atras");
+						$(".popy").addClass('no_visible')
+						$("#cursillos").removeClass('no_visible');
+						$("#mascursos").removeClass('no_visible');
+					
+			})
+			
+			
+			/*$('.popupp').click(function() {
 
    					$('.verpopup').popup();
    					$('.verpopup').popup("open");
 				
-			});		
+			});	*/	
 			
 			
 		
@@ -82,6 +99,10 @@ $(function() {
     	
        <div id="cursillos">
         
+        </div>
+        <div   class="popy no_visible">
+        	<div  id="atras" class="botoncito ">Atras</div>
+            <div class="up"></div>
         </div>
         <div  id="mascursos" class="boton ">Más permisos</div>
         

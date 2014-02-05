@@ -9,6 +9,7 @@ var paginasIntensivo=1;
 var pagesCliente=1;
 var paginasCliente=1;
 var misfotos;
+var miscursos;
 
 function obtenerImagenes(){
 				var data = {
@@ -113,14 +114,20 @@ function obtenerCursos() {
 				 $.mobile.loading("hide");
 					if(objjson5.status=="ok"){
 						paginascursos=objjson5.pages;
-						var miscursos=objjson5.posts;
+						miscursos=objjson5.posts;
 						for(curso in miscursos){
 							jQuery("#cursillos").append(
 			'<div class="avis clear">'
-			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop"><img class="left" width="100px"  src="'+miscursos[curso].thumbnail+'"/></a>'
-			+'<div class="tit_curso">'
-			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
+			
+			//+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop"><img class="left" width="100px"  src="'+miscursos[curso].thumbnail+'"/></a>'
+//			+'<div class="tit_curso">'
+//			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
+			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].thumbnail+'"/>'
+		
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].title+'</div>'
+		+''
+			
 			+'</div>');
 						}
 						
@@ -131,8 +138,8 @@ function obtenerCursos() {
 		
 			}
 		
-	}		
-		
+}
+	
 		//obtener avisos
 		
 function obtenerAvisos() {
@@ -332,5 +339,6 @@ $(document).delegate('#navmenu a','tap',function(){
 	//alterContent(urldest);
 	//$( ":mobile-pagecontainer" ).pagecontainer( "change", urldest, { transition: "fade" } );
 return false;
+
 			})
 	 
