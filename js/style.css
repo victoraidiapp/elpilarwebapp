@@ -239,7 +239,7 @@ a.avis{
 	
 }
 .month{
-	background-color: #999;
+	background-color: #90bc00;
 	min-height: 25px;
 	width: 75px;
 	display: block;
@@ -286,11 +286,12 @@ a.avis{
 	float:left;
 }
 .titulo{
-	color:#88b4b9
-	margin-top:10px;
-	margin-left:60px;
-	display:block;
-	
+	color: #90bc00;
+	margin-top: 10px;
+	margin-left: 60px;
+	display: block;
+	font-weight: bold;
+	text-decoration: underline;
 }
 .direccion{
 	margin-bottom:10px;

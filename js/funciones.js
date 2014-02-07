@@ -10,6 +10,7 @@ var pagesCliente=1;
 var paginasCliente=1;
 var misfotos;
 var miscursos;
+var misavisos;
 
 function obtenerImagenes(){
 				var data = {
@@ -162,20 +163,18 @@ function obtenerAvisos() {
 								 $.mobile.loading( "hide");
 					if(objjson4.status=="ok"){
 						paginasavisos=objjson4.pages;
-						var misavisos=objjson4.posts;
+						misavisos=objjson4.posts;
 						for(aviso in misavisos){
 							jQuery("#tablon").append(
-			'<a href="#'+misavisos[aviso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'
-			+'<div class="avis clear">'
+			'<div class="avis clear popupp" data-iden='+aviso+'>'
 			+'<img class="left" width="100px"  src="'+misavisos[aviso].thumbnail+'"/>'
-			+'<div class="tit_aviso">'+misavisos[aviso].title+'</div><div class="content_aviso">'+misavisos[aviso].excerpt +'</div></a>'
-			+'<div data-role="popup" id="'+misavisos[aviso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p class="no_enlace">'+misavisos[aviso].content+'</p></div>'
+			+'<div class="tit_aviso">'+misavisos[aviso].title+'</div><div class="content_aviso">'+misavisos[aviso].excerpt +'</div>'
 			+'</div>');
 						}
 						
 						
 						pagess++;
-						$('#avisillos').trigger('create');
+						
 					}
 		})
 		
@@ -235,16 +234,15 @@ function obtenerAvisos() {
 							jQuery("#intensivillos").append(
 							'<div class="intensivillos">'
 							+'<div class="date"><span class="month">'+mesn+'</span><span class="day">'+dia+'</span><span class="weekday">'+weekday+'</span></div>'
-               	             +'<div class="eventos">'
-							 +'<a href="#'+misintensivos[intensivo].ID+'" data-rel="popup" class=" popupp" data-transition="pop">'
-							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span></a></div>'
-						 +'<div data-role="popup" id="'+misintensivos[intensivo].ID+'" class="verpopup hide"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><div class=""><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"></div><div class="contenidos">'+misintensivos[intensivo].post_content+'</div></div>'
+               	             +'<div class="eventos popupp">'
+							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span></div>'
+						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content+'</div></div></div>'
 							 +'</div>'); 
 							 
 					
 				}
-				console.log("ahora creo nuevo");
-						$('#misintensivo').trigger('create');		 
+				
+						 
 					
 						
 					}

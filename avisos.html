@@ -37,16 +37,32 @@ $(function() {
 			
 		
 			})	
-			var maxHeight = $(window).height() - 30;
-			console.log("mi altura maxima es "+maxHeight);
-    		$('.verpopup').css('max-height', maxHeight + 'px');
 			
-			$('.popupp').click(function() {
+			jQuery(document).delegate('.popupp','tap',function(){
+				console.log("has picado en popupp");
+					var miid=$(this).data('iden');
+						$("#tablon").addClass('no_visible');
+						$("#masavisos").addClass('no_visible');
+						$(".popy .up").html('<div id="'+misavisos[miid].id+'" class="verpopup"><p class="no_enlace">'+misavisos[aviso].content+'</p></div>');
+						$(".popy").removeClass('no_visible')
+			})
+			jQuery(document).delegate('#atras','tap',function(){
+				console.log("has picado en atras");
+						$(".popy").addClass('no_visible')
+						$("#tablon").removeClass('no_visible');
+						$("#masavisos").removeClass('no_visible');
+					
+			})
+			/*var maxHeight = $(window).height() - 30;
+			console.log("mi altura maxima es "+maxHeight);
+    		$('.verpopup').css('max-height', maxHeight + 'px');*/
+			
+			/*$('.popupp').click(function() {
 
    					$('.verpopup').popup();
 					
    					$('.verpopup').popup("open");
-			});		
+			});		*/
 			
 				
 		});
@@ -88,7 +104,13 @@ $(function() {
     <div id="#container" data-role="content">
     	
     	<div id="tablon">
-        
+        	
+        </div>
+         <div   class="popy no_visible">
+        	<div  id="atras" class="botoncito ">Atras</div>
+            <div class="up"></div>
+            <div></div>
+            <div  id="atras" class="boton ">Atras</div>
         </div>
         <div  id="masavisos" class="boton">Más avisos</div>
         
