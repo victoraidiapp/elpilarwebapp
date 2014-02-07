@@ -133,7 +133,7 @@ function obtenerCursos() {
 						}
 						
 						pagesCurso++;
-					//	$('#miscursillos').trigger('create');
+						$('#miscursillos').trigger('create');
 					}
 		})
 		
@@ -174,6 +174,7 @@ function obtenerAvisos() {
 						
 						
 						pagess++;
+						$('#avisillos').trigger('create');
 						
 					}
 		})
@@ -242,7 +243,7 @@ function obtenerAvisos() {
 					
 				}
 				
-						 
+						 $('#misintensivo').trigger('create');
 					
 						
 					}
