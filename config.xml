@@ -15,7 +15,7 @@ Victor&Rocio
 </author>
 
 <access origin="*" subdomains="true" />
-
+<preference name="LoadingDialog" value="My Title,My Message"/>
 <preference name="permissions" value="none"/>
 
 </widget>

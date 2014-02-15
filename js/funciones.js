@@ -94,15 +94,19 @@ function obtenerGaleria() {
 
 	// obtener cursos
 			
-function obtenerCursos() {
+function obtenerCursos(firstTime) {
+	
 			if(pagesCurso<=paginascursos){
-				 $.mobile.loading( "show", {
-            text: "Cargando permisos",
-            textVisible: true,
-            theme: "a",
-            textonly: false,
-            
-    });
+				if(!firstTime){
+					
+						 $.mobile.loading( "show", {
+					text: "Cargando permisos",
+					textVisible: true,
+					theme: "a",
+					textonly: false,
+					
+						 });
+				}
 			var data = {
 					type:'wpsc-product',
 					count:10,
@@ -112,7 +116,14 @@ function obtenerCursos() {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_products/", data, function(objjson5) {
 		console.log('El servidor me ha dicho: ' + objjson5);
-				 $.mobile.loading("hide");
+				 if(firstTime){
+					 $("#cursillos.ui-icon-loading").removeClass("ui-icon-loading");
+					 $(document).delegate('#mascursos','tap',function(){
+						 obtenerCursos(false);
+					 })
+				 }else{
+					 $.mobile.loading("hide");
+				 }
 					if(objjson5.status=="ok"){
 						paginascursos=objjson5.pages;
 						miscursos=objjson5.posts;
@@ -143,15 +154,18 @@ function obtenerCursos() {
 	
 		//obtener avisos
 		
-function obtenerAvisos() {
+function obtenerAvisos(firstTime) {
 			if(pagess<=paginasavisos){
-								 $.mobile.loading( "show", {
-            text: "Cargando avisos",
-            textVisible: true,
-            theme: "a",
-            textonly: false,
-            
-    });
+				
+				if(!firstTime){
+					$.mobile.loading( "show", {
+					text: "Cargando avisos",
+					textVisible: true,
+					theme: "a",
+					textonly: false,
+					
+					});
+				}
 							var data = {
 					slug:"avisos",
 					count:5,
@@ -160,7 +174,15 @@ function obtenerAvisos() {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_category_posts/", data, function(objjson4) {
 		console.log('El servidor me ha dicho: ' + objjson4);
-								 $.mobile.loading( "hide");
+							if(firstTime){
+								$("#tablon.ui-icon-loading").removeClass("ui-icon-loading");
+								$(document).delegate('#masavisos','tap',function(){
+									obtenerAvisos(false);
+								})
+							}else{
+								$.mobile.loading( "hide");
+							}
+								 
 					if(objjson4.status=="ok"){
 						paginasavisos=objjson4.pages;
 						misavisos=objjson4.posts;
@@ -185,15 +207,18 @@ function obtenerAvisos() {
 	
 	//obtener intensivos
 	
-	function obtenerIntensivos() {
+	function obtenerIntensivos(firstTime) {
 			
+			if(!firstTime){
 				 $.mobile.loading( "show", {
             text: "Cargando cursos ",
             textVisible: true,
             theme: "a",
             textonly: false,
             
-    });
+    		});
+			
+			}
 							var data = {
 				
 				};
@@ -201,7 +226,14 @@ function obtenerAvisos() {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getNextCourses/", data, function(objjson10) {
 		console.log('El servidor me ha dicho: ' + objjson10);
-				 $.mobile.loading("hide");
+				if(firstTime){
+					$("#intensivillos.ui-icon-loading").removeClass("ui-icon-loading");
+					$(document).delegate('#masintensivos','tap',function(){
+						obtenerIntensivos(false);
+					})
+				}else{
+					$.mobile.loading("hide");
+				}
 					if(objjson10.status=="ok"){
 						
 						
@@ -322,6 +354,8 @@ jQuery("#envio").click(function(){
 			}
 			})
 });
+
+/*
 $(document).delegate('#navmenu a','tap',function(){
 								 $.mobile.loading( "show", {
             text: "Cargando sección...",
@@ -341,3 +375,4 @@ return false;
 
 			})
 	 
+*/

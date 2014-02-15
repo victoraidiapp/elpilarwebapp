@@ -23,8 +23,9 @@ jQuery(document).ready(function(){
 			obtenerImagenes();
 		//obtener imagenes portada
 		
-		obtenerCursos();
-		obtenerIntensivos();
+		obtenerCursos(true);
+		obtenerIntensivos(true);
+		obtenerAvisos(true);
 		
 });
 </script>
@@ -53,14 +54,14 @@ jQuery(document).ready(function(){
            
                 <li >
                 <div class="ui-bar ui-bar-e">
-                    <a href="#permisos"  data-transition="fade" >
+                    <a href="#permisos"  data-transition="slide" >
                         Permisos
                     </a>
                     </div>
                 </li>
                 <li>
                 <div class="ui-bar ui-bar-e">
-                    <a href="#intensivos" data-transition="fade" >
+                    <a href="#intensivos" data-transition="slide" >
                         Intensivos
                     </a>
                     </div>
@@ -88,7 +89,7 @@ jQuery(document).ready(function(){
                 </li>
                 <li>
                 <div class="ui-bar ui-bar-e">
-                    <a href="avisos.html" data-prefetch="true" data-ajax="false" data-transition="fade" >
+                    <a href="#avisos" data-transition="slide" >
                         Avisos
                     </a>
                     </div>
@@ -113,15 +114,15 @@ jQuery(document).ready(function(){
     </div>
     <div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
     	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
-       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="fade" >Home</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="fade" >Permisos</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="fade" >Cursos</a></li>    
+       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>    
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
                 
              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
              
              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
-              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="avisos.html"  data-ajax="false" data-transition="fade" >Avisos</a></li>
+              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
      
           
         </ul>
@@ -129,7 +130,7 @@ jQuery(document).ready(function(){
     </div>
         <div id="container" data-role="content">
     	
-       <div id="cursillos">
+       <div id="cursillos" class="ui-icon-loading">
         
         </div>
         <div   class="popy no_visible">
@@ -151,30 +152,66 @@ jQuery(document).ready(function(){
     </div>
     <div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
     	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
-       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="fade" >Home</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="fade" >Permisos</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="fade" >Cursos</a></li>    
+       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>    
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
                 
              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
              
              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
-              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="avisos.html"  data-ajax="false" data-transition="fade" >Avisos</a></li>
+              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
      
           
         </ul>
     
     </div>
         <div data-role="content">
-    	 <div id="intensivillos"></div>
+    	 <div id="intensivillos" class="ui-icon-loading"></div>
          <div   class="popy no_visible">
         	<div  id="atras" class="botoncito ">Atras</div>
             <div class="up"></div>
             <div></div>
             <div  id="atras" class="boton ">Atras</div>
         </div>
-        <div  id="masintensivo" class="boton ">Más cursos </div>
+        <div  id="masintensivos" class="boton ">Más cursos </div>
     </div>
 </div>
+
+<div data-role="page" id="avisos">
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1></h1>
+    <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu" data-role="button" role="button">Menu</a>
+ 	<a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
+    </div>
+    <div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
+    	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>    
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
+                
+             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
+             
+             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
+              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
+     
+          
+        </ul>
+    
+    </div>
+        <div data-role="content">
+    	 <div id="tablon" class="ui-icon-loading"></div>
+         <div   class="popy no_visible">
+        	<div  id="atras" class="botoncito ">Atras</div>
+            <div class="up"></div>
+            <div></div>
+            <div  id="atras" class="boton ">Atras</div>
+        </div>
+        <div  id="masavisos" class="boton ">Más cursos </div>
+    </div>
+</div>
+
+
 </body>
 </html>
