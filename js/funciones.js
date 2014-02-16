@@ -370,3 +370,17 @@ return false;
 			})
 	 
 */
+/*	DELEGACIONES */
+$(document).delegate('#home a','tap',function(){
+	$(this).addClass('ui-loading-button');
+
+})
+
+$(document).delegate('#navmenu a','tap',function(){
+	$(this).addClass('ui-loading-button');
+
+})
+$(document).delegate('.ui-page', 'pageshow', function () {
+    //Your code for each page load here
+	$('.ui-loading-button').removeClass('ui-loading-button');
+});

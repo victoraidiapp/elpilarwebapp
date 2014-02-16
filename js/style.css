@@ -2,9 +2,12 @@
 /* CSS Document */
 
 /*CSS SLIDESHOW*/
+body{
+	background-color:#FFF;
+}
 .slidegaleria{
 	margin-bottom: 10px;
-	background-image: url(images/ajax-loader.gif);
+	background-image: url(images/ajax-loader-img-bg.gif);
 	background-repeat: no-repeat;
 	background-position: center center;
 }
@@ -328,4 +331,22 @@ cursor: pointer;
 	min-height: 40px;
 	background-repeat: no-repeat;
 	background-position: center center;
+}
+
+.ui-content img{
+	background-image: url(images/ajax-loader-img-bg.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.ui-loading-button{
+	background-image: url(images/ajax-loader-button-bg.gif)!important;
+	background-repeat: no-repeat!important;
+	background-position: 0.6em center!important;	
+}
+
+#navmenu .ui-loading-button{
+	background-image: url(images/ajax-loader-button-bg.gif)!important;
+	background-repeat: no-repeat!important;
+	background-position: right center!important;	
 }
