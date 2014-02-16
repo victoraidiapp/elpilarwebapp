@@ -60,13 +60,13 @@ function pintarFotosGaleria(){
 	//obtener imagenes galeria
 function obtenerGaleria() {
 			
-				 $.mobile.loading( "show", {
+/*				 $.mobile.loading( "show", {
             text: "Cargando imagenes de Galería",
             textVisible: true,
             theme: "a",
             textonly: false,
             
-    });
+    });*/
 							var data = {
 					
 				};
@@ -74,7 +74,7 @@ function obtenerGaleria() {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getImgGaleria/", data, function(objjson8) {
 		console.log('El servidor me ha dicho: ' + objjson8);
-				 $.mobile.loading("hide");
+				// $.mobile.loading("hide");
 					if(objjson8.status=="ok"){
 						
 						misfotos=objjson8.imagenes;
@@ -289,13 +289,7 @@ function obtenerAvisos(firstTime) {
 
 function obtenerClientes() {
 		
-				 $.mobile.loading( "show", {
-            text: "Cargando clientes",
-            textVisible: true,
-            theme: "a",
-            textonly: false,
-            
-    });
+
 							var data = {
 					
 					
@@ -304,7 +298,7 @@ function obtenerClientes() {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_Promotion_Categories/", data, function(objjson9) {
 		console.log('El servidor me ha dicho: ' + objjson9);
-				 $.mobile.loading("hide");
+
 					if(objjson9.status=="ok"){
 						
 						misclientes=objjson9.query.tax_query[0].term;
@@ -313,14 +307,14 @@ function obtenerClientes() {
 						
 						for(cliente in misclientes){
 							
-							jQuery("#milist").append(
+							jQuery("#clientillos #lista_clientes").append(
 							
 							 '<li><a href="#">'+misclientes[cliente].name+'</a></li>');
     
 				
 						}
 											
-						$("#milist").listview( "refresh" );
+						$("#clientillos #lista_clientes").listview( "refresh" );
 						}
 		})
 		

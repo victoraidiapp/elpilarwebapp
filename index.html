@@ -22,10 +22,11 @@
 jQuery(document).ready(function(){ 
 			obtenerImagenes();
 		//obtener imagenes portada
-		
+		obtenerGaleria();
 		obtenerCursos(true);
 		obtenerIntensivos(true);
 		obtenerAvisos(true);
+        obtenerClientes();
 		
 });
 </script>
@@ -68,21 +69,21 @@ jQuery(document).ready(function(){
                 </li>
                 <li>
                 <div class="ui-bar ui-bar-e">
-                    <a href="contacto.html" data-prefetch="true" data-ajax="false" data-transition="fade" >
+                    <a href="#contacto" data-transition="slide" >
                         Contacto
                     </a>
                     </div>
                 </li>
                 <li>
                 <div class="ui-bar ui-bar-e">
-                    <a href="galeria.html" data-prefetch="true" data-ajax="false" data-transition="fade" >
+                    <a href="#galeria" data-transition="slide" >
                         Galería
                     </a>
                     </div>
                 </li>
                 <li>
                 <div class="ui-bar ui-bar-e">
-                    <a href="cliente.html" data-prefetch="true" data-ajax="false" data-transition="fade" >
+                    <a href="#clientes" data-transition="slide" >
                         Cliente
                     </a>
                     </div>
@@ -117,11 +118,11 @@ jQuery(document).ready(function(){
        		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>    
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#contacto"  data-transition="slide" >Contacto</a></li>
                 
-             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
+             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#galeria" data-transition="slide" >Galería</a></li>
              
-             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
+             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#clientes"  data-transition="slide" >Cliente</a></li>
               <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
      
           
@@ -151,18 +152,18 @@ jQuery(document).ready(function(){
  	<a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
     </div>
     <div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
-    	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
-       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+        <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>    
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
-                
-             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
-             
-             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
-              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
-     
-          
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#contacto"  data-transition="slide" >Contacto</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#galeria" data-transition="slide" >Galería</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#clientes"  data-transition="slide" >Cliente</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
+            
+            
         </ul>
     
     </div>
@@ -185,20 +186,19 @@ jQuery(document).ready(function(){
  	<a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
     </div>
     <div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
-    	<ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
-       		 <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+        <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>    
-            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="contacto.html"  data-ajax="false" data-transition="fade" >Contacto</a></li>    
-                
-             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="galeria.html"  data-ajax="false" data-transition="fade" >Galería</a></li>
-             
-             <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="cliente.html"  data-ajax="false" data-transition="fade" >Cliente</a></li>
-              <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
-     
-          
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#contacto"  data-transition="slide" >Contacto</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#galeria" data-transition="slide" >Galería</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#clientes"  data-transition="slide" >Cliente</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
+            
+            
         </ul>
-    
     </div>
         <div data-role="content">
     	 <div id="tablon" class="ui-icon-loading"></div>
@@ -209,6 +209,140 @@ jQuery(document).ready(function(){
             <div  id="atras" class="boton ">Atras</div>
         </div>
         <div  id="masavisos" class="boton ">Más cursos </div>
+    </div>
+</div>
+
+<div data-role="page" id="contacto">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1></h1>
+        <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu" data-role="button" role="button">Menu</a>
+        <a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
+    </div>
+	<div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
+        
+        
+        
+        <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#contacto"  data-transition="slide" >Contacto</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#galeria" data-transition="slide" >Galería</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#clientes"  data-transition="slide" >Cliente</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
+            
+            
+        </ul>
+    </div>
+    
+    
+    <div id="container" data-role="content">
+    	<h1>Contacto</h1>
+    	
+        <form action="" method="post" class="">
+            
+			<p>Tu nombre (requerido)<br>
+   			<input id="nombre" type="text" name="nombre" value="" class="" size="40"/></p>
+			<p>Tu Email (requerido)<br>
+    		<input id="email" type="text" name="email" value="" class="" size="40"/></p>
+			<p>Tema<br>
+    		<select id="tema" name="tema" class="">
+            	<option value="">---</option>
+                <option value="Solicitud de información">Solicitud de 			información</option>
+                <option value="Sugerencias - Quejas">Sugerencias - Quejas</option>
+            </select></p>
+            <p>Asunto<br>
+            <input id="asusnto" type="text" name="asunto" value="" class="" size="40"			/> </p>
+            <p>Tu Mensaje<br>
+            <textarea id="mensaje" name="mensaje" class="" cols="40" rows="10"></textarea></p>
+            <p><input id="envio" type="submit" value="Enviar" class=""></p>
+        </form>
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+<div data-role="page" id="galeria">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1></h1>
+        <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu" data-role="button" role="button">Menu</a>
+        <a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
+    </div>
+	<div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
+        
+        
+        
+        <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#contacto"  data-transition="slide" >Contacto</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#galeria" data-transition="slide" >Galería</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#clientes"  data-transition="slide" >Cliente</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
+            
+            
+        </ul>
+
+        
+    </div>
+    
+    
+    <div data-role="content">
+        <div id="gallery">
+            
+        </div>
+        <div  id="masgalerias" class="boton ">Más imágenes</div>
+        
+        
+        
+		
+ 	 	
+        
+    </div>
+</div>
+</div>
+
+
+<div data-role="page" id="clientes">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1></h1>
+        <a class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-left ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all" href="#navmenu" data-role="button" role="button">Menu</a>
+        <a  href="test.html"  data-ajax="false" class="jqm-navmenu-link ui-nodisc-icon ui-alt-icon ui-btn-right ui-btn    ui-icon-bars ui-corner-all ui-shadow ui-btn-inline">Tests</a>
+    </div>
+	<div id="navmenu" class="jqm-navmenu-panel ui-panel ui-panel-position-left ui-panel-display-overlay ui-body-a ui-panel-animate ui-panel-open" data-theme="a" data-display="overlay" data-position="left" data-role="panel">
+        
+        
+        
+        <ul class="jqm-list ui-alt-icon ui-nodisc-icon ui-listview" data-role="listview">
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#home"  data-transition="slide" >Home</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right" href="#permisos"  data-transition="slide" >Permisos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#intensivos"  data-transition="slide" >Cursos</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#contacto"  data-transition="slide" >Contacto</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#galeria" data-transition="slide" >Galería</a></li>
+            
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#clientes"  data-transition="slide" >Cliente</a></li>
+            <li class="ui-first-child"><a class="ui-btn ui-btn-icon-right "href="#avisos"  data-transition="slide" >Avisos</a></li>
+            
+            
+        </ul>
+    </div>
+    <div id="container" data-role="content">
+    	<div id="clientillos">
+            <ul id="lista_clientes" data-role="listview" data-inset="true">
+                
+            </ul>
+        </div>
+        
     </div>
 </div>
 
