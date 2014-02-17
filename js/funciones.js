@@ -117,7 +117,7 @@ function obtenerCursos(firstTime) {
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_products/", data, function(objjson5) {
 		console.log('El servidor me ha dicho: ' + objjson5);
 				 if(firstTime){
-					 $("#cursillos.ui-icon-loading").removeClass("ui-icon-loading");
+					 $("#cursillos.apelpilar-loading").removeClass("apelpilar-loading");
 					 $(document).delegate('#mascursos','tap',function(){
 						 obtenerCursos(false);
 					 })
@@ -175,7 +175,7 @@ function obtenerAvisos(firstTime) {
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_category_posts/", data, function(objjson4) {
 		console.log('El servidor me ha dicho: ' + objjson4);
 							if(firstTime){
-								$("#tablon.ui-icon-loading").removeClass("ui-icon-loading");
+								$("#tablon.apelpilar-loading").removeClass("apelpilar-loading");
 								$(document).delegate('#masavisos','tap',function(){
 									obtenerAvisos(false);
 								})
@@ -227,7 +227,7 @@ function obtenerAvisos(firstTime) {
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getNextCourses/", data, function(objjson10) {
 		console.log('El servidor me ha dicho: ' + objjson10);
 				if(firstTime){
-					$("#intensivillos.ui-icon-loading").removeClass("ui-icon-loading");
+					$("#intensivillos.apelpilar-loading").removeClass("apelpilar-loading");
 					$(document).delegate('#masintensivos','tap',function(){
 						obtenerIntensivos(false);
 					})
@@ -376,7 +376,7 @@ $(document).delegate('#home a','tap',function(){
 
 })
 
-$(document).delegate('#navmenu a','tap',function(){
+$(document).delegate('#menuelpilar a','tap',function(){
 	$(this).addClass('ui-loading-button');
 
 })

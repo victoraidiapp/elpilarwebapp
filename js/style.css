@@ -345,8 +345,15 @@ cursor: pointer;
 	background-position: 0.6em center!important;	
 }
 
-#navmenu .ui-loading-button{
+#menuelpilar .ui-loading-button{
 	background-image: url(images/ajax-loader-button-bg.gif)!important;
 	background-repeat: no-repeat!important;
 	background-position: right center!important;	
+}
+
+.apelpilar-loading{
+	background-image: url(images/ajax-loader-general-bg.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 50px;	
 }
