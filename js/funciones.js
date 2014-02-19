@@ -137,7 +137,7 @@ function obtenerCursos(firstTime) {
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].thumbnail+'"/>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].title+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].title+'</div><div class="item_desc">'+miscursos[curso].content+'</div>'
 		+''
 			
 			+'</div>');
@@ -190,13 +190,13 @@ function obtenerAvisos(firstTime) {
 							jQuery("#tablon").append(
 			'<div class="avis clear popupp" data-iden='+aviso+'>'
 			+'<img class="left" width="100px"  src="'+misavisos[aviso].thumbnail+'"/>'
-			+'<div class="tit_aviso">'+misavisos[aviso].title+'</div><div class="content_aviso">'+misavisos[aviso].excerpt +'</div>'
+			+'<div class="tit_aviso">'+misavisos[aviso].title+'</div><div class="item_desc">'+misavisos[aviso].content +'</div>'
 			+'</div>');
 						}
 						
 						
 						pagess++;
-						$('#avisillos').trigger('create');
+						$('#avisos').trigger('create');
 						
 					}
 		})
@@ -384,3 +384,27 @@ $(document).delegate('.ui-page', 'pageshow', function () {
     //Your code for each page load here
 	$('.ui-loading-button').removeClass('ui-loading-button');
 });
+
+
+/*DELEGACIONES PARA CARGAR EL CONTENIDO DEL ITEM EN EL VIEWER CONTENT*/
+$(document).delegate('#cursillos .avis','tap',function(){
+	
+	//Copiamos y pegamos el contenido en el visor
+	var contenido=$(this).find('.item_desc').html();
+	var imagen=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Permisos");
+	$('#content-viewer div[data-role="content"]').html(contenido);
+	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+})
+
+$(document).delegate('#tablon .avis','tap',function(){
+	
+	//Copiamos y pegamos el contenido en el visor
+	var contenido=$(this).find('.item_desc').html();
+	var imagen=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Avisos");
+	$('#content-viewer div[data-role="content"]').html(contenido);
+	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+})

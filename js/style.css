@@ -355,3 +355,10 @@ cursor: pointer;
 	background-position: center center;
 	height: 50px;	
 }
+.item_desc{
+display:none;	
+}
+
+#cursillos .avis,#tablon .avis{
+min-height:110px;	
+}
