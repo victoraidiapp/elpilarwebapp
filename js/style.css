@@ -362,3 +362,8 @@ display:none;
 #cursillos .avis,#tablon .avis{
 min-height:110px;	
 }
+#maincursos,#permisos,#avisos,#galeria{
+    padding-top:47px!important;
+    
+    
+}

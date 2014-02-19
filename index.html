@@ -29,6 +29,7 @@ $("[data-role=panel]").panel().enhanceWithin();
 		obtenerIntensivos(true);
 		obtenerAvisos(true);
         obtenerClientes();
+                       $('maincursos').trigger('create');
 		
 });
 </script>
@@ -133,17 +134,10 @@ $("[data-role=panel]").panel().enhanceWithin();
  	
     </div>
    
-        <div id="container" data-role="content">
+        <div data-role="content">
     	
-       <div id="cursillos" class="apelpilar-loading">
-        
-        </div>
-        <div   class="popy no_visible">
-        	<div  id="atras" class="botoncito ">Atras</div>
-            <div class="up"></div>
-            <div></div>
-            <div  id="atras" class="boton ">Atras</div>
-        </div>
+       <div id="cursillos" class="apelpilar-loading"></div>
+
         <div  id="mascursos" class="boton ">Más permisos</div>
         
    </div>
@@ -177,13 +171,8 @@ $("[data-role=panel]").panel().enhanceWithin();
     
         <div data-role="content">
     	 <div id="tablon" class="apelpilar-loading"></div>
-         <div   class="popy no_visible">
-        	<div  id="atras" class="botoncito ">Atras</div>
-            <div class="up"></div>
-            <div></div>
-            <div  id="atras" class="boton ">Atras</div>
-        </div>
-        <div  id="masavisos" class="boton ">Más cursos </div>
+
+        <div  id="masavisos" class="boton ">Más Avisos </div>
     </div>
 </div>
 

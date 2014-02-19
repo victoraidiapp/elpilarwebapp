@@ -144,7 +144,7 @@ function obtenerCursos(firstTime) {
 						}
 						
 						pagesCurso++;
-						$('#miscursillos').trigger('create');
+						$('#permisos').trigger('create');
 					}
 		})
 		
@@ -275,7 +275,7 @@ function obtenerAvisos(firstTime) {
 					
 				}
 				
-						 $('#misintensivo').trigger('create');
+						 $('#calendario').trigger('create');
 					
 						
 					}
