@@ -7,9 +7,7 @@ body{
 }
 .slidegaleria{
 	margin-bottom: 10px;
-	background-image: url(images/ajax-loader-img-bg.gif);
-	background-repeat: no-repeat;
-	background-position: center center;
+	display:none;
 }
 .rslides {
   position: relative;
@@ -331,11 +329,11 @@ cursor: pointer;
 	background-position: center center;
 }
 
-.ui-content img{
+/*.ui-content img{
 	background-image: url(images/ajax-loader-img-bg.gif);
 	background-repeat: no-repeat;
 	background-position: center center;
-}
+}*/
 
 .ui-loading-button{
 	background-image: url(images/ajax-loader-button-bg.gif)!important;
@@ -367,14 +365,24 @@ min-height:110px;
     
     
 }
-
+.ui-hor-loading{
+	background-image: url(images/ajax-loader-horiz-bg.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 20px;
+	padding-top: 30px;	
+}
 #home {
+	/*background-position: center 80%!important;*/
 	
-	
-	background-position: center 80%!important;
-	background: -webkit-radial-gradient(circle, white, #90bc00)!important; 
-	background: -moz-radial-gradient(circle, white, #90bc00)!important; 
-	background: -ms-radial-gradient(circle, white, #90bc00)!important; 
-	background: radial-gradient(circle, white, #90bc00)!important;
-	
+	background: -webkit-radial-gradient(center 60%,circle, white, #90bc00)!important; 
+	background: -moz-radial-gradient( center 60%,circle, white, #90bc00)!important; 
+  background: -ms-radial-gradient(center 60% ,circle, white, #90bc00)!important; 
+	background: radial-gradient(at center 60%,circle, white, #90bc00)!important;
+}
+
+#home [data-role="navbar"]{
+	position: absolute;
+	top: 330px;
+	width:90%;
 }

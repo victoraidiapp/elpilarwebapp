@@ -26,11 +26,15 @@ function obtenerImagenes(){
 							 
 							jQuery("ul.rslides").append(imagen);					 
 						 }
+						 
+						 $("#logo-resplandor").fadeOut(500,function(){
+							 $(".ui-hor-loading").remove();
+							 $(".slidegaleria").show();
 						jQuery(".rslides").responsiveSlides({  auto: true,            
   											speed: 500,            
-  											timeout: 4000,
+  											timeout: 4000}); 
 											
-											}); 			
+						 })
 					}
 		
 		});
