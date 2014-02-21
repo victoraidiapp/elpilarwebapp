@@ -26,10 +26,10 @@ function obtenerImagenes(){
 							 
 							jQuery("ul.rslides").append(imagen);					 
 						 }
-						 
+						 $(".ui-hor-loading").fadeOut(400);
 						 $("#logo-resplandor").fadeOut(500,function(){
-							 $(".ui-hor-loading").remove();
-							 $(".slidegaleria").show();
+							 
+							 $(".slidegaleria").fadeIn(300);
 						jQuery(".rslides").responsiveSlides({  auto: true,            
   											speed: 500,            
   											timeout: 4000}); 

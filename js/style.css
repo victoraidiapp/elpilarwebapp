@@ -372,7 +372,7 @@ min-height:110px;
 	height: 20px;
 	padding-top: 30px;	
 }
-#home {
+#home,#menuelpilar {
 	/*background-position: center 80%!important;*/
 	
 	background: -webkit-radial-gradient(center 60%,circle, white, #90bc00)!important; 
@@ -392,7 +392,7 @@ min-height:110px;
 	border:none!important;
 	text-align:center;
 }
-#home table td{
+#home table td,#menuelpilar table td{
 text-align:center;	
 }
 
