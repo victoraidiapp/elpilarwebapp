@@ -356,7 +356,7 @@ display:none;
 #cursillos .avis,#tablon .avis{
 min-height:110px;	
 }
-#maincursos,#permisos,#avisos,#galeria,#contacto,#calendario,#clientes,#content-viewer{
+#maincursos,#permisos,#avisos,#galeria,#contacto,#calendario,#clientes,#content-viewer,#empresas{
     padding-top:47px!important;
     
     
@@ -431,4 +431,10 @@ max-width: 3em;
 
 .ui-loading-button .ui-elpilar-loading{
     display:block;
+}
+#lista_clientes li{
+    position:relative;
+    top:0px;
+    left:0px;
+}
 }

@@ -311,9 +311,7 @@ function obtenerClientes() {
 						
 						for(cliente in misclientes){
 							
-							jQuery("#clientillos #lista_clientes").append(
-							
-							 '<li><a href="#">'+misclientes[cliente].name+'</a></li>');
+							jQuery("#clientillos #lista_clientes").append('<li data-promoslug="'+misclientes[cliente].slug+'"><div class="ui-elpilar-loading"></div>'+misclientes[cliente].name+'</li>');
     
 				
 						}
@@ -414,3 +412,39 @@ $(document).delegate('#tablon .avis','tap',function(){
 	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
 })
+
+$(document).delegate('#lista_clientes li','tap',function(){
+                     $(this).addClass('ui-loading-button');
+                     
+                     var promoslug=$(this).data('promoslug');
+                     
+                     var data = {
+                     promocategoria:promoslug
+                     
+                     };
+                     
+                     
+                     jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_Promotions/", data, function(objjson9) {
+                                    console.log('El servidor me ha dicho: ' + objjson9);
+                                    
+                                    if(objjson9.status=="ok"){
+                                    
+                                    empresas=objjson9.posts;
+                                    $('#empresas #container').html('');
+                                    $('#empresas #container').append('<div><ul id="lista_empresas" data-role="list-view" data-inset=true></ul></div>')
+                                    console.log("mis clientes "+misclientes);
+                                    
+                                    for(empresa in empresas){
+                                    
+                                    $("#lista_empresas").append('<li>'+empresas[empresa].title+'</li>');
+                                    
+                                    
+                                    }
+                                    
+                                   $("#lista_empresas").listview();
+                                    $( ":mobile-pagecontainer" ).pagecontainer( "change","#empresas",{transition:'slide'});
+                                    }
+                                    })
+
+                     
+                     })
