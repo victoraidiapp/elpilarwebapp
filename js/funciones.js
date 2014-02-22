@@ -376,12 +376,14 @@ return false;
 */
 /*	DELEGACIONES */
 $(document).delegate('#home a','tap',function(){
-	$(this).addClass('ui-loading-button');
+	$(this).parent().addClass('ui-loading-button');
+                     
+                     
 
 })
 
 $(document).delegate('#menuelpilar a','tap',function(){
-	$(this).addClass('ui-loading-button');
+	$(this).parent().addClass('ui-loading-button');
 
 })
 $(document).delegate('.ui-page', 'pageshow', function () {

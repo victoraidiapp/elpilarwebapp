@@ -333,19 +333,15 @@ cursor: pointer;
 	background-image: url(images/ajax-loader-img-bg.gif);
 	background-repeat: no-repeat;
 	background-position: center center;
-}*/
-
-.ui-loading-button{
-	background-image: url(images/ajax-loader-button-bg.gif)!important;
-	background-repeat: no-repeat!important;
-	background-position: 0.6em center!important;	
 }
+
+
 
 #menuelpilar .ui-loading-button{
 	background-image: url(images/ajax-loader-button-bg.gif)!important;
 	background-repeat: no-repeat!important;
 	background-position: right center!important;	
-}
+}*/
 
 .apelpilar-loading{
 	background-image: url(images/ajax-loader-general-bg.gif);
@@ -360,7 +356,7 @@ display:none;
 #cursillos .avis,#tablon .avis{
 min-height:110px;	
 }
-#maincursos,#permisos,#avisos,#galeria{
+#maincursos,#permisos,#avisos,#galeria,#contacto,#calendario,#clientes,#content-viewer{
     padding-top:47px!important;
     
     
@@ -383,7 +379,7 @@ min-height:110px;
 
 #home [data-role="navbar"]{
 	position: absolute;
-	top: 40%;
+	top: 45%;
 	width:90%;
 }
 
@@ -393,7 +389,18 @@ min-height:110px;
 	text-align:center;
 }
 #home table td,#menuelpilar table td{
-text-align:center;	
+text-align:center;
+position:relative;
+top:0px;
+left:0px;
+}
+
+#home .ui-btn{
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top:0.4em;
+    padding-bottom:0em;
+    
 }
 
 .ui-listview .ui-li-has-thumb > img:first-child, .ui-listview .ui-li-has-thumb > .ui-btn > img:first-child, .ui-listview .ui-li-has-thumb .ui-li-thumb {
@@ -402,4 +409,26 @@ left: 0;
 top: 0;
 max-height: 3em;
 max-width: 3em;
+}
+
+.ui-elpilar-loading{
+    
+    display:none;
+    background-color:#90bc00;
+    background-image: url(images/ajax-loader-img2-bg.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+    z-index:10;
+    opacity:0.6;
+    border-radius:1em;
+    
+}
+
+.ui-loading-button .ui-elpilar-loading{
+    display:block;
 }
