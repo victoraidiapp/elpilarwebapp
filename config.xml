@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.aidiapp.example"
-    version   = "1.0.5">
+    version   = "1.0.4">
 
 <name>AutoescuelasElpilarApp</name>
 
@@ -17,5 +17,6 @@ Victor&Rocio
 <access origin="*" subdomains="true" />
 <preference name="permissions" value="none"/>
 <preference name="SplashScreen" value="portada" />
+<preference name="SplashScreenDelay" value="25000" />
 </widget>
 
