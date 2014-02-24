@@ -437,4 +437,12 @@ max-width: 3em;
     top:0px;
     left:0px;
 }
+
+.ui-btn-f{
+	background:none!important;
+	border:none!important;
+	margin:0px;
+	padding:0px;
+	max-height:32px;
+	
 }
