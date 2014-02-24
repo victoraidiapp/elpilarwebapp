@@ -2,8 +2,12 @@
 
 var pagess=1;
 var paginasavisos=1;
+var pagesPermiso=1;
+var paginaspermisos=1;
 var pagesCurso=1;
 var paginascursos=1;
+var pagesCertificado=1;
+var paginascertificado=1;
 var pagesIntensivo=1;
 var paginasIntensivo=1;
 var pagesCliente=1;
@@ -97,14 +101,14 @@ function obtenerGaleria() {
 	}		
 
 	// obtener cursos
-			
+
 function obtenerCursos(firstTime) {
 	
 			if(pagesCurso<=paginascursos){
 				if(!firstTime){
 					
 						 $.mobile.loading( "show", {
-					text: "Cargando permisos",
+					text: "Cargando cursos",
 					textVisible: true,
 					theme: "a",
 					textonly: false,
@@ -113,13 +117,14 @@ function obtenerCursos(firstTime) {
 				}
 			var data = {
 					type:'wpsc-product',
+					slug:'cursos',
 					count:10,
 					page:pagesCurso
 				};
 				
 				
-		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_products/", data, function(objjson5) {
-		console.log('El servidor me ha dicho: ' + objjson5);
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getProductsByCategory/", data, function(objjson5) {
+		console.log('El servidor me ha dicho de los permisos: ' + objjson5);
 				 if(firstTime){
 					 $("#cursillos.apelpilar-loading").removeClass("apelpilar-loading");
 					 $(document).delegate('#mascursos','tap',function(){
@@ -139,15 +144,75 @@ function obtenerCursos(firstTime) {
 //			+'<div class="tit_curso">'
 //			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
-			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].thumbnail+'"/>'
+			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].title+'</div><div class="item_desc">'+miscursos[curso].content+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content+'</div>'
 		+''
 			
 			+'</div>');
 						}
 						
 						pagesCurso++;
+						$('#cursos').trigger('create');
+					}
+		})
+		
+			}
+		
+}
+
+			
+function obtenerPermisos(firstTime) {
+	
+			if(pagesPermiso<=paginaspermisos){
+				if(!firstTime){
+					
+						 $.mobile.loading( "show", {
+					text: "Cargando permisos",
+					textVisible: true,
+					theme: "a",
+					textonly: false,
+					
+						 });
+				}
+			var data = {
+					type:'wpsc-product',
+					slug:'permisos',
+					count:10,
+					page:pagesPermiso
+				};
+				
+				
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getProductsByCategory/", data, function(objjson5) {
+		console.log('El servidor me ha dicho de los permisos: ' + objjson5);
+				 if(firstTime){
+					 $("#permisillos.apelpilar-loading").removeClass("apelpilar-loading");
+					 $(document).delegate('#maspermisos','tap',function(){
+						 obtenerPermisos(false);
+					 })
+				 }else{
+					 $.mobile.loading("hide");
+				 }
+					if(objjson5.status=="ok"){
+						paginaspermisos=objjson5.pages;
+						miscursos=objjson5.posts;
+						for(curso in miscursos){
+							jQuery("#permisillos").append(
+			'<div class="avis clear">'
+			
+			//+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop"><img class="left" width="100px"  src="'+miscursos[curso].thumbnail+'"/></a>'
+//			+'<div class="tit_curso">'
+//			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
+			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
+			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
+		
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content+'</div>'
+		+''
+			
+			+'</div>');
+						}
+						
+						pagesPermiso++;
 						$('#permisos').trigger('create');
 					}
 		})
@@ -155,6 +220,66 @@ function obtenerCursos(firstTime) {
 			}
 		
 }
+
+function obtenerCertificados(firstTime) {
+	
+			if(pagesCertificado<=paginascertificado){
+				if(!firstTime){
+					
+						 $.mobile.loading( "show", {
+					text: "Cargando certificados",
+					textVisible: true,
+					theme: "a",
+					textonly: false,
+					
+						 });
+				}
+			var data = {
+					type:'wpsc-product',
+					slug:'certificados-profesionales',
+					count:10,
+					page:pagesCertificado
+				};
+				
+				
+		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getProductsByCategory/", data, function(objjson5) {
+		console.log('El servidor me ha dicho de los permisos: ' + objjson5);
+				 if(firstTime){
+					 $("#certificadillos.apelpilar-loading").removeClass("apelpilar-loading");
+					 $(document).delegate('#mascertificados','tap',function(){
+						 obtenerCertificados(false);
+					 })
+				 }else{
+					 $.mobile.loading("hide");
+				 }
+					if(objjson5.status=="ok"){
+						paginascertificado=objjson5.pages;
+						miscursos=objjson5.posts;
+						for(curso in miscursos){
+							jQuery("#certificadillos").append(
+			'<div class="avis clear">'
+			
+			//+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop"><img class="left" width="100px"  src="'+miscursos[curso].thumbnail+'"/></a>'
+//			+'<div class="tit_curso">'
+//			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
+			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
+			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
+		
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content+'</div>'
+		+''
+			
+			+'</div>');
+						}
+						
+						pagesCertificado++;
+						$('#certificados').trigger('create');
+					}
+		})
+		
+			}
+		
+}
+
 	
 		//obtener avisos
 		
