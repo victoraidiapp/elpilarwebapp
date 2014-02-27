@@ -15,7 +15,18 @@ var paginasCliente=1;
 var misfotos;
 var miscursos;
 var misavisos;
+var totalItemsCarga=0;
+var itemsCargados=0;
 
+function refrescarCargaInicial(){
+	var porcent=(itemsCargados/totalItemsCarga)*220;
+	$(".ui-hor-loading").css('width',porcent+"px");
+	if(porcent==220){
+		$(".ui-hor-loading").fadeOut(400);
+		
+	}
+	
+}
 function obtenerImagenes(){
 				var data = {
 				};
@@ -30,7 +41,7 @@ function obtenerImagenes(){
 							 
 							jQuery("ul.rslides").append(imagen);					 
 						 }
-						 $(".ui-hor-loading").fadeOut(400);
+						 //$(".ui-hor-loading").fadeOut(400);
 						 $("#logo-resplandor").fadeOut(500,function(){
 							 
 							 $(".slidegaleria").fadeIn(300);
@@ -114,6 +125,9 @@ function obtenerCursos(firstTime) {
 					textonly: false,
 					
 						 });
+				}else{
+					totalItemsCarga++;
+					refrescarCargaInicial();
 				}
 			var data = {
 					type:'wpsc-product',
@@ -130,6 +144,9 @@ function obtenerCursos(firstTime) {
 					 $(document).delegate('#mascursos','tap',function(){
 						 obtenerCursos(false);
 					 })
+					 itemsCargados++;
+					refrescarCargaInicial();
+
 				 }else{
 					 $.mobile.loading("hide");
 				 }
@@ -174,7 +191,11 @@ function obtenerPermisos(firstTime) {
 					textonly: false,
 					
 						 });
+				}else{
+					totalItemsCarga++;
+					refrescarCargaInicial();
 				}
+
 			var data = {
 					type:'wpsc-product',
 					slug:'permisos',
@@ -190,6 +211,8 @@ function obtenerPermisos(firstTime) {
 					 $(document).delegate('#maspermisos','tap',function(){
 						 obtenerPermisos(false);
 					 })
+					 itemsCargados++;
+					refrescarCargaInicial();
 				 }else{
 					 $.mobile.loading("hide");
 				 }
@@ -233,7 +256,11 @@ function obtenerCertificados(firstTime) {
 					textonly: false,
 					
 						 });
+				}else{
+					totalItemsCarga++;
+					refrescarCargaInicial();
 				}
+
 			var data = {
 					type:'wpsc-product',
 					slug:'certificados-profesionales',
@@ -249,6 +276,8 @@ function obtenerCertificados(firstTime) {
 					 $(document).delegate('#mascertificados','tap',function(){
 						 obtenerCertificados(false);
 					 })
+					 itemsCargados++;
+					refrescarCargaInicial();
 				 }else{
 					 $.mobile.loading("hide");
 				 }
@@ -294,7 +323,11 @@ function obtenerAvisos(firstTime) {
 					textonly: false,
 					
 					});
+				}else{
+					totalItemsCarga++;
+					refrescarCargaInicial();
 				}
+
 							var data = {
 					slug:"avisos",
 					count:5,
@@ -308,6 +341,8 @@ function obtenerAvisos(firstTime) {
 								$(document).delegate('#masavisos','tap',function(){
 									obtenerAvisos(false);
 								})
+								itemsCargados++;
+					refrescarCargaInicial();
 							}else{
 								$.mobile.loading( "hide");
 							}
@@ -347,7 +382,11 @@ function obtenerAvisos(firstTime) {
             
     		});
 			
-			}
+			}else{
+					totalItemsCarga++;
+					refrescarCargaInicial();
+				}
+
 							var data = {
 				
 				};
@@ -360,6 +399,8 @@ function obtenerAvisos(firstTime) {
 					$(document).delegate('#masintensivos','tap',function(){
 						obtenerIntensivos(false);
 					})
+					itemsCargados++;
+					refrescarCargaInicial();
 				}else{
 					$.mobile.loading("hide");
 				}
@@ -419,6 +460,10 @@ function obtenerAvisos(firstTime) {
 function obtenerClientes() {
 		
 
+					totalItemsCarga++;
+					refrescarCargaInicial();
+				
+
 							var data = {
 					
 					
@@ -427,7 +472,8 @@ function obtenerClientes() {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_Promotion_Categories/", data, function(objjson9) {
 		console.log('El servidor me ha dicho: ' + objjson9);
-
+itemsCargados++;
+					refrescarCargaInicial();
 					if(objjson9.status=="ok"){
 						
 						misclientes=objjson9.query.tax_query[0].term;

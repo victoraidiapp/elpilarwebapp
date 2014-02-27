@@ -347,7 +347,8 @@ cursor: pointer;
 	background-image: url(images/ajax-loader-general-bg.gif);
 	background-repeat: no-repeat;
 	background-position: center center;
-	height: 50px;	
+	height: 50px;
+	
 }
 .item_desc{
 display:none;	
@@ -367,6 +368,9 @@ min-height:110px;
 	background-position: center center;
 	height: 20px;
 	padding-top: 30px;	
+	margin-right: auto;
+	margin-left: auto;		
+	width:0px;
 }
 #home,#menuelpilar {
 	/*background-position: center 80%!important;*/
