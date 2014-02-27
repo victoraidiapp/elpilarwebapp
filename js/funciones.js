@@ -441,7 +441,7 @@ function obtenerClientes() {
 				
 						}
 											
-						$("#clientillos #lista_clientes").listview( "refresh" );
+						$("#lista_clientes").listview( "refresh" );
 						}
 		})
 		
