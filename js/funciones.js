@@ -491,8 +491,9 @@ itemsCargados++;
     
 				
 						}
-											
+						$('#clientes').trigger('create');					
 						$("#lista_clientes").listview( "refresh" );
+						
 						}
 		})
 		
