@@ -453,4 +453,9 @@ max-width: 3em;
 	padding:0px;
 	max-height:32px;
 	
+}#tarjeta_cliente {
+	background-image: url(images/tarjeta_cliente.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 160px;
 }

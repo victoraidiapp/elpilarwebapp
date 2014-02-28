@@ -487,7 +487,7 @@ itemsCargados++;
 						
 						for(cliente in misclientes){
 							
-							jQuery("#clientillos #lista_clientes").append('<li data-promoslug="'+misclientes[cliente].slug+'"><div class="ui-elpilar-loading"></div>'+misclientes[cliente].name+'</li>');
+							jQuery("#clientillos #lista_clientes").append('<li data-titulopromo="'+misclientes[cliente].name+'" data-promoslug="'+misclientes[cliente].slug+'"><div class="ui-elpilar-loading"></div>'+misclientes[cliente].name+'</li>');
     
 				
 						}
@@ -612,6 +612,17 @@ $(document).delegate('#intensivillos .intensivillos','tap',function(){
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
 })
 
+$(document).delegate('#empresas #lista_empresas li','tap',function(){
+	
+	//Copiamos y pegamos el contenido en el visor
+	var contenido=$(this).find('.item_desc').html();
+	//var imagen=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Promoción");
+	$('#content-viewer div[data-role="content"]').html(contenido);
+	//$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+})
+
 $(document).delegate('#tablon .avis','tap',function(){
 	
 	//Copiamos y pegamos el contenido en el visor
@@ -627,7 +638,7 @@ $(document).delegate('#lista_clientes li','tap',function(){
                      $(this).addClass('ui-loading-button');
                      
                      var promoslug=$(this).data('promoslug');
-                     
+                     var titulo=$(this).data('titulopromo');
                      var data = {
                      promocategoria:promoslug
                      
@@ -646,12 +657,13 @@ $(document).delegate('#lista_clientes li','tap',function(){
                                     
                                     for(empresa in empresas){
                                     
-                                    $("#lista_empresas").append('<li>'+empresas[empresa].title+'</li>');
+                                    $("#lista_empresas").append('<li>'+empresas[empresa].title+'<div class="item_desc"><h2>'+empresas[empresa].title+'</h2>'+empresas[empresa].content+'</div></li>');
                                     
                                     
                                     }
                                     
                                    $("#lista_empresas").listview();
+								   $("#empresas .ui-header h1").text(titulo);
                                     $( ":mobile-pagecontainer" ).pagecontainer( "change","#empresas",{transition:'slide'});
                                     }
                                     })
