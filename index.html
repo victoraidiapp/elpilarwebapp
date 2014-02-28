@@ -15,12 +15,19 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 
 <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+<script type="text/javascript" src="js/yunero.min.js"></script>
 <script type="text/javascript" src="js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="js/jquery.jpanelmenu.min.js"></script>
 <script type="text/javascript" src="js/funciones.js"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript">
-
+//youtube URL (mandatory) -----------------------------
+ var youTubeURL = "https://www.youtube.com/user/AUTOESCUELASELPILAR"; 
+ //optional parameters ---------------------------------
+ //width and height of your widget
+ var yuneroWidgetHeight = 400; 
+ var yuneroWidgetWidth = 300; 
+ var yuneroVideoHeight = 200; //works with plugin in download 2
 
 function onDeviceReady() {
     // Now safe to use device APIs
@@ -268,7 +275,7 @@ $("[data-role=panel]").panel().enhanceWithin();
     <div data-role="header" data-position="fixed" data-theme="a">
         <h1></h1>
         <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
-        
+        <a href="#videos" data-transition="slide" data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right">Videos</a>
     </div>
 
     
@@ -380,6 +387,20 @@ $("[data-role=panel]").panel().enhanceWithin();
     </div>
 </div>
 
+<div data-role="page" id="videos">
+<div data-role="header" data-position="fixed" data-theme="a">
+        <h1>Videos</h1>
+        <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+        <a href="#galeria" data-transition="slide"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right">Fotos</a>
+        
+    </div>
+	
+    
+    <div data-role="content" id="yunero">
+	
+        
+    </div>
+</div>
 
 </body>
 </html>
