@@ -567,9 +567,42 @@ $(document).delegate('#cursillos .avis','tap',function(){
 	//Copiamos y pegamos el contenido en el visor
 	var contenido=$(this).find('.item_desc').html();
 	var imagen=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Cursos");
+	$('#content-viewer div[data-role="content"]').html(contenido);
+	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+})
+
+$(document).delegate('#certificadillos .avis','tap',function(){
+	
+	//Copiamos y pegamos el contenido en el visor
+	var contenido=$(this).find('.item_desc').html();
+	var imagen=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Certificados");
+	$('#content-viewer div[data-role="content"]').html(contenido);
+	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+})
+
+$(document).delegate('#permisillos .avis','tap',function(){
+	
+	//Copiamos y pegamos el contenido en el visor
+	var contenido=$(this).find('.item_desc').html();
+	var imagen=$(this).find('img').attr("src");
 	$('#content-viewer h1').text("Permisos");
 	$('#content-viewer div[data-role="content"]').html(contenido);
 	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+})
+
+$(document).delegate('#intensivillos .intensivillos','tap',function(){
+	
+	//Copiamos y pegamos el contenido en el visor
+	var contenido=$(this).find('.verpopup .ver').html();
+	//var cabecera=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Calendario");
+	$('#content-viewer div[data-role="content"]').html(contenido);
+	//$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
 })
 
