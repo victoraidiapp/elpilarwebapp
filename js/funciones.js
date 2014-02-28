@@ -94,6 +94,7 @@ function obtenerGaleria() {
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getImgGaleria/", data, function(objjson8) {
 		console.log('El servidor me ha dicho: ' + objjson8);
 				// $.mobile.loading("hide");
+				$("#home-btn-galeria").animate({opacity:1},'slow');
 					if(objjson8.status=="ok"){
 						
 						misfotos=objjson8.imagenes;
@@ -141,6 +142,7 @@ function obtenerCursos(firstTime) {
 		console.log('El servidor me ha dicho de los permisos: ' + objjson5);
 				 if(firstTime){
 					 $("#cursillos.apelpilar-loading").removeClass("apelpilar-loading");
+					 $("#home-btn-maincursos").animate({opacity:1},'slow');
 					 $(document).delegate('#mascursos','tap',function(){
 						 obtenerCursos(false);
 					 })
@@ -208,6 +210,7 @@ function obtenerPermisos(firstTime) {
 		console.log('El servidor me ha dicho de los permisos: ' + objjson5);
 				 if(firstTime){
 					 $("#permisillos.apelpilar-loading").removeClass("apelpilar-loading");
+					 $("#home-btn-permisos").animate({opacity:1},'slow');
 					 $(document).delegate('#maspermisos','tap',function(){
 						 obtenerPermisos(false);
 					 })
@@ -337,6 +340,7 @@ function obtenerAvisos(firstTime) {
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/get_category_posts/", data, function(objjson4) {
 		console.log('El servidor me ha dicho: ' + objjson4);
 							if(firstTime){
+								$("#home-btn-avisos").animate({opacity:1},'slow');
 								$("#tablon.apelpilar-loading").removeClass("apelpilar-loading");
 								$(document).delegate('#masavisos','tap',function(){
 									obtenerAvisos(false);
@@ -474,6 +478,7 @@ function obtenerClientes() {
 		console.log('El servidor me ha dicho: ' + objjson9);
 itemsCargados++;
 					refrescarCargaInicial();
+					$("#home-btn-clientes").animate({opacity:1},'slow');
 					if(objjson9.status=="ok"){
 						
 						misclientes=objjson9.query.tax_query[0].term;
