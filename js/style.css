@@ -459,3 +459,7 @@ max-width: 3em;
 	background-position: center center;
 	height: 160px;
 }
+.ui-panel-open{
+	
+	position:fixed;
+}
