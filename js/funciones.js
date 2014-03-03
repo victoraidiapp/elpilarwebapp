@@ -20,7 +20,8 @@ var itemsCargados=0;
 
 function refrescarCargaInicial(){
 	var porcent=(itemsCargados/totalItemsCarga)*220;
-	$(".ui-hor-loading").css('width',porcent+"px");
+	//$(".ui-hor-loading").css('width',porcent+"px");
+	$(".ui-hor-loading").animate({width:porcent+"px"},{duration:400});
 	if(porcent==220){
 		$(".ui-hor-loading").fadeOut(400);
 		
