@@ -401,6 +401,7 @@ left:0px;
 
 #home table td{
 opacity:0.5;	
+overflow:hidden;
 }
 
 #home .ui-btn{

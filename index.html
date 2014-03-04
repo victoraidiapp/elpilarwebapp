@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
 <title>AUTOESCUELAS EL PILAR</title>
 <link href="js/jquery.mobile-1.4.0.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="js/elPilar.min.css" />
 <link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
-
+<link rel="stylesheet" href="js/jquery.mobile.iscrollview.css"/>
+    <link rel="stylesheet" href="js/jquery.mobile.iscrollview-pull.css"/>
 <!--<link href="js/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css">-->
 <link href="js/style.css" rel="stylesheet" type="text/css">
 
@@ -18,6 +19,8 @@
 <script type="text/javascript" src="js/yunero.min.js"></script>
 <script type="text/javascript" src="js/responsiveslides.min.js"></script>
 <script type="text/javascript" src="js/jquery.jpanelmenu.min.js"></script>
+ <script src="js/iscroll.js"></script>
+    <script src="js/jquery.mobile.iscrollview.js"></script>
 <script type="text/javascript" src="js/funciones.js"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript">
@@ -32,6 +35,7 @@
 function onDeviceReady() {
     // Now safe to use device APIs
 	navigator.splashscreen.hide();
+
 }
 
 jQuery(document).ready(function(){ 
@@ -115,15 +119,15 @@ $("[data-role=panel]").panel().enhanceWithin();
         
         <table width="100%" style="width:100%">
         	<tr>
-            		<td width="33%"  id="home-btn-permisos"><a href="#permisos"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-permisos-home.png"/></a>Permisos</td>
-                    <td width="33%" id="home-btn-maincursos"><a href="#maincursos"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%"width="100%"  src="js/images/icono-cursos-home.png"/></a>Cursos</td>
-                    <td width="33%" id="home-btn-avisos"><a href="#avisos"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%"width="100%" src="js/images/icono-radio-home.png"/></a>Avisos</td>
+            		<td width="33%" style="width:33%"  id="home-btn-permisos"><a href="#permisos"  data-transition="slide" data- ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-permisos-home.png"/></a>Permisos</td>
+                    <td width="33%" style="width:33%" id="home-btn-maincursos"><a href="#maincursos"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%"  src="js/images/icono-cursos-home.png"/></a>Cursos</td>
+                    <td width="33%" style="width:33%" id="home-btn-avisos"><a href="#avisos"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-radio-home.png"/></a>Avisos</td>
             </tr>
             
             <tr>
-            		<td width="33%" id="home-btn-galeria"><a href="#galeria"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-galeria-home.png"/></a>Galeria</td>
-                    <td width="33%" id="home-btn-clientes"><a href="#clientes"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/icono-cliente-home.png"/></a>Clientes</td>
-                    <td width="33%" id="home-btn-contacto"><a href="#contacto"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/icon-contacto-home.png"/></a>Contacto</td>
+            		<td width="33%" style="width:33%" id="home-btn-galeria"><a href="#galeria"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-galeria-home.png"/></a>Galeria</td>
+                    <td width="33%" style="width:33%" id="home-btn-clientes"><a href="#clientes"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/icono-cliente-home.png"/></a>Clientes</td>
+                    <td width="33%" style="width:33%" id="home-btn-contacto"><a href="#contacto"  data-transition="slide" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/icon-contacto-home.png"/></a>Contacto</td>
             </tr>
         </table>	
         
@@ -190,7 +194,7 @@ $("[data-role=panel]").panel().enhanceWithin();
  	
     </div>
    
-        <div data-role="content">
+        <div data-role="content" data-iscroll>
     	
        <div id="permisillos" class="apelpilar-loading"></div>
 
@@ -206,7 +210,7 @@ $("[data-role=panel]").panel().enhanceWithin();
  	<a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
     </div>
     
-        <div data-role="content">
+        <div data-role="content" data-iscroll>
     	 <div id="intensivillos" class="apelpilar-loading"></div>
          <div   class="popy no_visible">
         	<div  id="atras" class="botoncito ">Atras</div>
@@ -218,14 +222,14 @@ $("[data-role=panel]").panel().enhanceWithin();
     </div>
 </div>
 
-<div data-role="page" id="avisos">
+<div data-role="page" id="avisos" >
     <div data-role="header" data-position="fixed" data-theme="a">
    	<h1></h1>
     <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
  	
     </div>
     
-        <div data-role="content">
+        <div data-role="content" data-iscroll>
     	 <div id="tablon" class="apelpilar-loading"></div>
 
         <div  id="masavisos" class="boton ">Más Avisos </div>
@@ -241,7 +245,7 @@ $("[data-role=panel]").panel().enhanceWithin();
 	
     
     
-    <div id="container" data-role="content">
+    <div id="container" data-role="content" data-iscroll>
     	
     	
         <form action="" method="post" class="">
@@ -280,7 +284,7 @@ $("[data-role=panel]").panel().enhanceWithin();
 
     
     
-    <div data-role="content">
+    <div data-role="content" data-iscroll>
         <div id="gallery">
             
         </div>
@@ -303,7 +307,7 @@ $("[data-role=panel]").panel().enhanceWithin();
         
     </div>
 
-    <div id="container" data-role="content">
+    <div id="container" data-role="content" data-iscroll>
     <div id="tarjeta_cliente"></div>
     	<div id="clientillos">
             <ul id="lista_clientes" data-role="listview" data-inset="true">
@@ -322,7 +326,7 @@ $("[data-role=panel]").panel().enhanceWithin();
         
     </div>
     
-    <div id="container" data-role="content">
+    <div id="container" data-role="content" data-iscroll>
 
         
     </div>
@@ -335,7 +339,7 @@ $("[data-role=panel]").panel().enhanceWithin();
         
     </div>
     
-    <div data-role="content"></div>
+    <div data-role="content" data-iscroll></div>
 </div>
 
 <div data-role="page" id="certificados">
@@ -345,7 +349,7 @@ $("[data-role=panel]").panel().enhanceWithin();
  	
     </div>
    
-        <div data-role="content">
+        <div data-role="content" data-iscroll>
     	
        <div id="certificadillos" class="apelpilar-loading"></div>
 
@@ -360,7 +364,7 @@ $("[data-role=panel]").panel().enhanceWithin();
  	
     </div>
    
-        <div data-role="content">
+        <div data-role="content" data-iscroll>
     	
        <div id="cursillos" class="apelpilar-loading"></div>
 
@@ -397,7 +401,7 @@ $("[data-role=panel]").panel().enhanceWithin();
     </div>
 	
     
-    <div data-role="content" id="yunero">
+    <div data-role="content" id="yunero" data-iscroll>
 	
         
     </div>

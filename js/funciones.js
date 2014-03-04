@@ -553,18 +553,22 @@ return false;
 /*	DELEGACIONES */
 $(document).delegate('#home a','tap',function(){
 	$(this).parent().addClass('ui-loading-button');
-                     
+	//delete $.mobile.urlHistory.stack[0];
+   // $( ":mobile-pagecontainer" ).pagecontainer( "change",$(this).attr("href"),{transition:'slide',reverse: false, changeHash: false});
+	//return false;
+   // $("#home").remove();             
                      
 
 })
 
 $(document).delegate('#menuelpilar a','tap',function(){
 	$(this).parent().addClass('ui-loading-button');
-
+	
 })
 $(document).delegate('.ui-page', 'pageshow', function () {
     //Your code for each page load here
 	$('.ui-loading-button').removeClass('ui-loading-button');
+
 });
 
 
