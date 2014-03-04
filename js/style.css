@@ -381,7 +381,7 @@ min-height:110px;
 	background: radial-gradient(at center 60%,circle, white, #90bc00)!important;
 }
 
-#home [data-role="navbar"]{
+#home table{
 	position: absolute;
 	top: 45%;
 	width:90%;
