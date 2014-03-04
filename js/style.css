@@ -464,3 +464,4 @@ max-width: 3em;
 	
 	position:fixed;
 }
+.ui-page { -webkit-backface-visibility: hidden!important; }
