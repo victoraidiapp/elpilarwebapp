@@ -23,7 +23,7 @@ function refrescarCargaInicial(){
 	//$(".ui-hor-loading").css('width',porcent+"px");
 	$(".ui-hor-loading").animate({width:porcent+"px"},{duration:400});
 	if(porcent==220){
-		$(".ui-hor-loading").fadeOut(400);
+		$(".ui-hor-loading").parent().fadeOut(400);
 		
 	}
 	
@@ -75,6 +75,7 @@ function pintarFotosGaleria(){
 			delete misfotos[foto];
 			}
 				$('#misgalerias').trigger('create');
+				$('#misgalerias [data-role="content"]').iscrollview("refresh");
 }
 	
 	//obtener imagenes galeria
@@ -174,6 +175,8 @@ function obtenerCursos(firstTime) {
 						
 						pagesCurso++;
 						$('#cursos').trigger('create');
+						$('#cursos [data-role="content"]').iscrollview("refresh");
+						//$('#cursos [data-role="content"]').refresh();
 					}
 		})
 		
@@ -241,6 +244,7 @@ function obtenerPermisos(firstTime) {
 						
 						pagesPermiso++;
 						$('#permisos').trigger('create');
+						$('#permisos [data-role="content"]').iscrollview("refresh");
 					}
 		})
 		
@@ -306,6 +310,7 @@ function obtenerCertificados(firstTime) {
 						
 						pagesCertificado++;
 						$('#certificados').trigger('create');
+						$('#certificados [data-role="content"]').iscrollview("refresh");
 					}
 		})
 		
@@ -366,6 +371,7 @@ function obtenerAvisos(firstTime) {
 						
 						pagess++;
 						$('#avisos').trigger('create');
+						$('#avisos [data-role="content"]').iscrollview("refresh");
 						
 					}
 		})
@@ -451,7 +457,7 @@ function obtenerAvisos(firstTime) {
 				}
 				
 						 $('#calendario').trigger('create');
-					
+					$('#calendario [data-role="content"]').iscrollview("refresh");
 						
 					}
 		})
@@ -492,7 +498,8 @@ itemsCargados++;
     
 				
 						}
-						$('#clientes').trigger('create');					
+						$('#clientes').trigger('create');	
+						$('#clientes [data-role="content"]').iscrollview("refresh");				
 						$("#lista_clientes").listview( "refresh" );
 						
 						}
@@ -568,6 +575,7 @@ $(document).delegate('#menuelpilar a','tap',function(){
 $(document).delegate('.ui-page', 'pageshow', function () {
     //Your code for each page load here
 	$('.ui-loading-button').removeClass('ui-loading-button');
+	//$(this).find('[data-role="content"]').iscrollview("refresh");
 
 });
 
