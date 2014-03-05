@@ -74,8 +74,8 @@ function pintarFotosGaleria(){
 			fotoc++;
 			delete misfotos[foto];
 			}
-				$('#misgalerias').trigger('create');
-				$('#misgalerias [data-role="content"]').iscrollview("refresh");
+				$('#galeria').trigger('create');
+				$('#galeria [data-role="content"]').iscrollview("refresh");
 }
 	
 	//obtener imagenes galeria
@@ -581,6 +581,9 @@ $(document).delegate('.ui-page', 'pageshow', function () {
 
 
 /*DELEGACIONES PARA CARGAR EL CONTENIDO DEL ITEM EN EL VIEWER CONTENT*/
+$(document).delegate('#masgalerias','tap',function(){
+	pintarFotosGaleria();
+})
 $(document).delegate('#cursillos .avis','tap',function(){
 	
 	//Copiamos y pegamos el contenido en el visor

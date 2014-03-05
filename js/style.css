@@ -211,6 +211,12 @@ a.avis{
  }
  .popphoto{
 	 margin-right:10px;
+	 
+	 min-height:30px;
+	 background-color:#90bc00;
+    background-image: url(images/ajax-loader-img2-bg.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
  }
  
 /* clientes*/
