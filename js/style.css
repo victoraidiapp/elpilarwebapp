@@ -364,7 +364,7 @@ cursor: pointer;
 display:none;	
 }
 
-#cursillos .avis,#tablon .avis{
+#cursillos .avis,#tablon .avis,#certificados .avis,#permisos .avis{
 min-height:110px;	
 }
 #maincursos,#permisos,#avisos,#galeria,#contacto,#calendario,#clientes,#content-viewer,#empresas,#certificados,#cursos,#videos,#visor-video{
@@ -475,3 +475,11 @@ max-width: 3em;
 	position:fixed;
 }
 .ui-page { -webkit-backface-visibility: hidden!important; }
+#content-viewer .iscroll-content div{
+padding:15px;
+padding-bottom:50px;	
+margin-bottom:50px;
+}
+#content-viewer img:first-child{
+	display:block;
+}

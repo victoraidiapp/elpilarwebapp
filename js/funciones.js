@@ -1,5 +1,3 @@
-
-
 var pagess=1;
 var paginasavisos=1;
 var pagesPermiso=1;
@@ -158,6 +156,8 @@ function obtenerCursos(firstTime) {
 						paginascursos=objjson5.pages;
 						miscursos=objjson5.posts;
 						for(curso in miscursos){
+							var str=miscursos[curso].post_content;
+							//var res=str.replace("/r/n","<br/>");
 							jQuery("#cursillos").append(
 			'<div class="avis clear">'
 			
@@ -167,7 +167,7 @@ function obtenerCursos(firstTime) {
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+str.replace(/\n/g,"<br/>")+'</div>'
 		+''
 			
 			+'</div>');
@@ -236,7 +236,7 @@ function obtenerPermisos(firstTime) {
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content.replace(/\n/g,"<br/>")+'</div>'
 		+''
 			
 			+'</div>');
@@ -302,7 +302,7 @@ function obtenerCertificados(firstTime) {
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content.replace(/\n/g,"<br/>")+'</div>'
 		+''
 			
 			+'</div>');
@@ -364,7 +364,7 @@ function obtenerAvisos(firstTime) {
 							jQuery("#tablon").append(
 			'<div class="avis clear popupp" data-iden='+aviso+'>'
 			+'<img class="left" width="100px"  src="'+misavisos[aviso].thumbnail+'"/>'
-			+'<div class="tit_aviso">'+misavisos[aviso].title+'</div><div class="item_desc">'+misavisos[aviso].content +'</div>'
+			+'<div class="tit_aviso">'+misavisos[aviso].title+'</div><div class="item_desc">'+misavisos[aviso].content.replace(/\n/g,"<br/>") +'</div>'
 			+'</div>');
 						}
 						
@@ -450,7 +450,7 @@ function obtenerAvisos(firstTime) {
 							+'<div class="date"><span class="month">'+mesn+'</span><span class="day">'+dia+'</span><span class="weekday">'+weekday+'</span></div>'
                	             +'<div class="eventos popupp">'
 							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span></div>'
-						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content+'</div></div></div>'
+						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>")+'</div></div></div>'
 							 +'</div>'); 
 							 
 					
@@ -584,71 +584,59 @@ $(document).delegate('.ui-page', 'pageshow', function () {
 $(document).delegate('#masgalerias','tap',function(){
 	pintarFotosGaleria();
 })
-$(document).delegate('#cursillos .avis','tap',function(){
-	
+function visualizarItem(){
 	//Copiamos y pegamos el contenido en el visor
-	var contenido=$(this).find('.item_desc').html();
+	var contenido=$(this).find('.item_desc').clone();
+	contenido.removeClass('item_desc');
+	//console.log("El curso es "+contenido);
+	//contenido.addClass("descripcionItem");
 	var imagen=$(this).find('img').attr("src");
 	$('#content-viewer h1').text("Cursos");
-	$('#content-viewer div[data-role="content"]').html(contenido);
-	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
-})
-
-$(document).delegate('#certificadillos .avis','tap',function(){
+	$('#content-viewer div[data-role="content"] .iscroll-content').html('');
+	contenido.prepend('<img src="'+imagen+'" />');
+	contenido.append('<div style="height:20px"></div>');
+	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	
-	//Copiamos y pegamos el contenido en el visor
-	var contenido=$(this).find('.item_desc').html();
-	var imagen=$(this).find('img').attr("src");
-	$('#content-viewer h1').text("Certificados");
-	$('#content-viewer div[data-role="content"]').html(contenido);
-	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
-})
+	$('#content-viewer [data-role="content"]').iscrollview('refresh');
+}
+$(document).delegate('#cursillos .avis','tap',visualizarItem)
 
-$(document).delegate('#permisillos .avis','tap',function(){
-	
-	//Copiamos y pegamos el contenido en el visor
-	var contenido=$(this).find('.item_desc').html();
-	var imagen=$(this).find('img').attr("src");
-	$('#content-viewer h1').text("Permisos");
-	$('#content-viewer div[data-role="content"]').html(contenido);
-	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
-})
+$(document).delegate('#certificadillos .avis','tap',visualizarItem)
+
+$(document).delegate('#permisillos .avis','tap',visualizarItem)
 
 $(document).delegate('#intensivillos .intensivillos','tap',function(){
 	
-	//Copiamos y pegamos el contenido en el visor
-	var contenido=$(this).find('.verpopup .ver').html();
-	//var cabecera=$(this).find('img').attr("src");
-	$('#content-viewer h1').text("Calendario");
-	$('#content-viewer div[data-role="content"]').html(contenido);
-	//$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	var contenido=$(this).find('.verpopup.no_visible .ver').clone();
+	//contenido.removeClass('no_visible');
+	console.log("El curso es "+contenido);
+	var imagen=$(this).find('img').attr("src");
+	//$('#content-viewer h1').text("Cursos");
+	$('#content-viewer div[data-role="content"] .iscroll-content').html('');
+	//contenido.prepend('<img src="'+imagen+'" />');
+	contenido.append('<div style="height:20px"></div>');
+	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 })
 
 $(document).delegate('#empresas #lista_empresas li','tap',function(){
 	
-	//Copiamos y pegamos el contenido en el visor
-	var contenido=$(this).find('.item_desc').html();
-	//var imagen=$(this).find('img').attr("src");
-	$('#content-viewer h1').text("Promoción");
-	$('#content-viewer div[data-role="content"]').html(contenido);
-	//$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
+	var contenido=$(this).find('.item_desc').clone();
+	contenido.removeClass('item_desc');
+	console.log("El curso es "+contenido);
+	var imagen=$(this).find('img').attr("src");
+	$('#content-viewer h1').text("Cursos");
+	$('#content-viewer div[data-role="content"] .iscroll-content').html('');
+	//contenido.prepend('<img src="'+imagen+'" />');
+	contenido.append('<div style="height:20px"></div>');
+	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 })
 
-$(document).delegate('#tablon .avis','tap',function(){
-	
-	//Copiamos y pegamos el contenido en el visor
-	var contenido=$(this).find('.item_desc').html();
-	var imagen=$(this).find('img').attr("src");
-	$('#content-viewer h1').text("Avisos");
-	$('#content-viewer div[data-role="content"]').html(contenido);
-	$('#content-viewer div[data-role="content"]').prepend('<img src="'+imagen+'" />');
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
-})
+$(document).delegate('#tablon .avis','tap',visualizarItem)
 
 $(document).delegate('#lista_clientes li','tap',function(){
                      $(this).addClass('ui-loading-button');
