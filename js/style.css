@@ -480,6 +480,12 @@ padding:15px;
 padding-bottom:50px;	
 margin-bottom:50px;
 }
-#content-viewer img:first-child{
+#content-viewer [data-role="content"] img:first-child{
 	display:block;
+	width:auto;
+	
+}
+#content-viewer [data-role="content"] img{
+	
+	max-width:100%;
 }
