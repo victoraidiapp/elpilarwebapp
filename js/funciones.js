@@ -15,6 +15,8 @@ var miscursos;
 var misavisos;
 var totalItemsCarga=0;
 var itemsCargados=0;
+var dias_semana = new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado");
+var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre");	
 
 function refrescarCargaInicial(){
 	var porcent=(itemsCargados/totalItemsCarga)*220;
@@ -420,13 +422,12 @@ function obtenerAvisos(firstTime) {
 						
 						var misintensivos=objjson10.cursos;
 						for(intensivo in misintensivos){
-							var mydates=new Date(misintensivos[intensivo].start);
-							var mydatefin=new Date(misintensivos[intensivo].end);
-							var dias_semana = new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado");
-							var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre");	
+							var mydates=Date.parse(misintensivos[intensivo].start);
+							var mydatefin=Date.parse(misintensivos[intensivo].end);
+							
 							var mes=mydates.getMonth();
 							var mesfin=mydatefin.getMonth();
-						
+						console.log("El mes de "+ misintensivos[intensivo].start + " es " + mes);
 							var mesn=meses[mes];
 							var mesnfin=meses[mesfin];
 							var dia=mydates.getDate();
