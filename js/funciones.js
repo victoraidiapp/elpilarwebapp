@@ -434,12 +434,17 @@ function obtenerAvisos(firstTime) {
 						
 						var misintensivos=objjson10.cursos;
 						for(intensivo in misintensivos){
-							var mydates=Date.parse(misintensivos[intensivo].start);
-							var mydatefin=Date.parse(misintensivos[intensivo].end);
+							var finicio=misintensivos[intensivo].start;
+							var ffin=misintensivos[intensivo].end;
+							finicio=finicio.replace("-","/");
+							ffin=ffin.replace("-","/");
+							console.log("El mes de "+ finicio + " es ");
+							var mydates=new Date(finicio);
+							var mydatefin=new Date(ffin);
 							
 							var mes=mydates.getMonth();
 							var mesfin=mydatefin.getMonth();
-						console.log("El mes de "+ misintensivos[intensivo].start + " es " + mes);
+						
 							var mesn=meses[mes];
 							var mesnfin=meses[mesfin];
 							var dia=mydates.getDate();
