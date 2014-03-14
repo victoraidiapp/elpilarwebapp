@@ -436,11 +436,11 @@ function obtenerAvisos(firstTime) {
 						for(intensivo in misintensivos){
 							var finicio=misintensivos[intensivo].start;
 							var ffin=misintensivos[intensivo].end;
-							finicio=finicio.replace("-","/");
-							ffin=ffin.replace("-","/");
-							console.log("El mes de "+ finicio + " es ");
-							var mydates=new Date(finicio);
-							var mydatefin=new Date(ffin);
+							//finicio=finicio.replace("-","/");
+							//ffin=ffin.replace("-","/");
+							console.log("El mes de "+ finicio + " es "+moment(finicio).format());
+							var mydates=new Date(moment(finicio).format());
+							var mydatefin=new Date(moment(ffin).format());
 							
 							var mes=mydates.getMonth();
 							var mesfin=mydatefin.getMonth();
