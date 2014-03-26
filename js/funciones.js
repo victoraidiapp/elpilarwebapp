@@ -613,6 +613,7 @@ $(document).delegate('#menuelpilar a','tap',function(){
 	if ($.mobile.activePage.is($(this).attr("href"))){
            $(this).parent().removeClass('ui-loading-button');
 		   $("#menuelpilar").panel('close');
+		   return false;
         }
 	
 })
