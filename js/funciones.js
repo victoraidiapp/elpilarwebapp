@@ -172,6 +172,21 @@ function obtenerCursos(firstTime) {
 						for(curso in miscursos){
 							var str=miscursos[curso].post_content;
 							//var res=str.replace("/r/n","<br/>");
+							
+							//Obtenemos las variantes de los cursos
+							var variaciones=miscursos[curso].variaciones;
+							var variaciones_str='<h3 class="ui-bar ui-bar-a ui-corner-all">Variaciones del curso</h3>';
+							for(v in variaciones){
+								variaciones_str=variaciones_str+'<h4>'+variaciones[v].titulo+'</h4><ul class="lista_variaciones" data-role="listview">'
+								var varitems=variaciones[v].variantes;
+									for(vi in varitems){
+										variaciones_str=variaciones_str+'<li>'+varitems[vi]+'</li>';
+									}
+									
+							variaciones_str=variaciones_str+'</ul>';		
+							}
+							//variaciones_str=variaciones_str+'</div>';
+							console.log("La lista de variaciones "+variaciones_str);
 							jQuery("#cursillos").append(
 			'<div class="avis clear">'
 			
@@ -181,7 +196,7 @@ function obtenerCursos(firstTime) {
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
 			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+str.replace(/\n/g,"<br/>")+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+str.replace(/\n/g,"<br/>")+variaciones_str+'</div>'
 		+''
 			
 			+'</div>');
@@ -190,6 +205,7 @@ function obtenerCursos(firstTime) {
 						pagesCurso++;
 						$('#cursos').trigger('create');
 						$('#cursos [data-role="content"]').iscrollview("refresh");
+						
 						//$('#cursos [data-role="content"]').refresh();
 					}
 		})
@@ -438,9 +454,16 @@ function obtenerAvisos(firstTime) {
 							var ffin=misintensivos[intensivo].end;
 							//finicio=finicio.replace("-","/");
 							//ffin=ffin.replace("-","/");
+<<<<<<< HEAD
 							console.log("El mes de "+ finicio + " es "+moment(finicio).format());
 							var mydates=new Date(moment(finicio).format());
 							var mydatefin=new Date(moment(ffin).format());
+=======
+							console.log("El mes de "+ finicio + " es " + moment(finicio).format() );
+							var mydates=new Date(moment().format(finicio,"mm/dd/YYYY" ));
+							//var mydates=new Date("12/01/2014");
+							var mydatefin=new Date(moment().format(ffin,"YYYY/mm/dd"));
+>>>>>>> FETCH_HEAD
 							
 							var mes=mydates.getMonth();
 							var mesfin=mydatefin.getMonth();
@@ -620,6 +643,7 @@ function visualizarItem(){
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$('#content-viewer .lista_variaciones').listview('refresh');
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 }
 $(document).delegate('#cursillos .avis','tap',visualizarItem)
