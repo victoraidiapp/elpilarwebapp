@@ -495,3 +495,16 @@ margin-bottom:50px;
 	
 	max-width:100%;
 }
+
+.lista-variaciones h3{
+margin-top:0px;	
+}
+.lista-variaciones h4{
+margin-left:10px;	
+}
+.lista-variaciones .ui-listview {
+margin-left:10px;	
+}
+.lista-variaciones .ui-listview li{
+margin-left:15px;	
+}

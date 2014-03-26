@@ -177,7 +177,7 @@ function obtenerCursos(firstTime) {
 							
 							//Obtenemos las variantes de los cursos
 							var variaciones=miscursos[curso].variaciones;
-							var variaciones_str='<h3 class="ui-bar ui-bar-a ui-corner-all">Variaciones del curso</h3>';
+							var variaciones_str='<div class="ui-body ui-body-a ui-corner-all lista-variaciones"><h3 class="ui-bar ui-bar-a ui-corner-all">Variaciones del curso</h3>';
 							for(v in variaciones){
 								variaciones_str=variaciones_str+'<h4>'+variaciones[v].titulo+'</h4><ul class="lista_variaciones" data-role="listview">'
 								var varitems=variaciones[v].variantes;
@@ -187,7 +187,7 @@ function obtenerCursos(firstTime) {
 									
 							variaciones_str=variaciones_str+'</ul>';		
 							}
-							//variaciones_str=variaciones_str+'</div>';
+							variaciones_str=variaciones_str+'</div>';
 							console.log("La lista de variaciones "+variaciones_str);
 							jQuery("#cursillos").append(
 			'<div class="avis clear">'
