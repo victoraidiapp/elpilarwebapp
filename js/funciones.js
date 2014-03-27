@@ -621,6 +621,21 @@ $(document).delegate('.ui-page', 'pageshow', function () {
     //Your code for each page load here
 	$('.ui-loading-button').removeClass('ui-loading-button');
 	//$(this).find('[data-role="content"]').iscrollview("refresh");
+	var pagina=$( ":mobile-pagecontainer" ).pagecontainer("getActivePage").attr("id");
+	switch(pagina){
+		case "content-viewer":
+		case "permisos":
+		case "calendario":
+		case "avisos":
+		case "galeria":
+		case "clientes":
+		case "empresas":
+		case "certificados":
+		case "cursos":
+		case "videos":
+			$( ":mobile-pagecontainer" ).pagecontainer("getActivePage").find('[data-role="content"]').iscrollview("scrollTo", 0, 0, 200, false);
+		break;	
+	}
 
 });
 
@@ -645,6 +660,7 @@ function visualizarItem(){
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
 	$('#content-viewer .lista_variaciones').listview('refresh');
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
+	
 }
 $(document).delegate('#cursillos .avis','tap',visualizarItem)
 
