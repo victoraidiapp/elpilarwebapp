@@ -658,8 +658,9 @@ function visualizarItem(){
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
-	$('#content-viewer .lista_variaciones').listview('refresh');
+	
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
+	$('#content-viewer .lista_variaciones').listview('refresh');
 	
 }
 $(document).delegate('#cursillos .avis','tap',visualizarItem)
