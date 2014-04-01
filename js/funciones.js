@@ -646,6 +646,40 @@ $( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:
 
 });
 
+//DELEGACION PARA ENVIAR EL FORMULARIO Y PROCESAR LA RESPUESTA
+$(document).delegate("#contacto #envio",'tap',function(){
+	console.log("El valor es "+$("#contacto #nombre").val());
+	if((!$("#contacto #nombre").val())||(!$("#contacto #email").val())){
+	$("#fallo_campo").popup();
+	$("#fallo_campo").popup("open");
+	return false;	
+	}
+	$.mobile.loading( "show", {
+            text: "Enviando formulario ",
+            textVisible: true,
+            theme: "a",
+            textonly: false,
+            
+    		});
+			
+	var data={
+	nombre:$("#contacto #nombre").val(),
+	email:	$("#contacto #email").val(),
+	tema:$("#contacto #tema").val(),
+	asunto:$("#contacto #asunto").val(),
+	mensaje:$("#contacto #mensaje").val()
+	}
+	jQuery.getJSON("http://www.autoescuelaselpilar.com/api/sendContacto/", data, function(r) {
+		if(r.status=='ok'){
+			$("#respuesta-contacto div[data-role='content'").html(r.html);
+			$("#respuesta-contacto div[data-role='content'").iscrollview('refresh');
+			
+			
+		}
+		$( ":mobile-pagecontainer" ).pagecontainer( "change","#respuesta-contacto",{transition:'slide'});
+			
+	})
+})
 
 /*DELEGACIONES PARA CARGAR EL CONTENIDO DEL ITEM EN EL VIEWER CONTENT*/
 $(document).delegate('#masgalerias','tap',function(){
