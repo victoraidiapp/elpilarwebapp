@@ -645,7 +645,11 @@ $( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:
 	}
 
 });
+$(document).delegate("#volver_desde_video","tap",function(){
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#videos",{transition:'slide'});
+    return false;
 
+});
 //DELEGACION PARA ENVIAR EL FORMULARIO Y PROCESAR LA RESPUESTA
 $(document).delegate("#contacto #envio",'tap',function(){
 	console.log("El valor es "+$("#contacto #nombre").val());
