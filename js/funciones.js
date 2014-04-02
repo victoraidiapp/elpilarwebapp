@@ -647,6 +647,7 @@ $( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:
 });
 $(document).delegate("#volver_desde_video","tap",function(){
 	$( ":mobile-pagecontainer" ).pagecontainer( "change","#videos",{transition:'slide'});
+	
     return false;
 
 });
