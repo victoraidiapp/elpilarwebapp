@@ -17,13 +17,23 @@ var totalItemsCarga=0;
 var itemsCargados=0;
 var dias_semana = new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado");
 var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre");	
+var dispositivo=false;
+function cerrarApp(){
+	navigator.app.exitApp();
+}
 function sinConexion() {
 	$("#msg_loading").text("Error de conexión");
-        navigator.notification.alert(
-        'Ha sido imposible conectar con nuestro servidor. Inténtalo más tarde!',     // mensaje (message)
-        'Imposible conectar',            // titulo (title)
-        'Sin conexion'                // nombre del botón (buttonName)
-        );
+	
+	if(dispositivo){
+        
+		navigator.notification.alert(
+    'Ha sido imposible conectar con nuestro servidor. Inténtalo más tarde!',  // message
+    cerrarApp,         // callback
+    'Imposible conectar',            // title
+    'Salir'                  // buttonName
+);
+	}
+	
 		
     }
 	
@@ -63,7 +73,7 @@ function obtenerImagenes(){
 					}
 		
 		}).fail(function(){
-			//alert("El servidor no está operativo");
+			
 			sinConexion();
 		});
 		
@@ -646,7 +656,7 @@ $( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:
 
 });
 $(document).delegate("#volver_desde_video","tap",function(){
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#videos",{transition:'slide'});
+	window.history.go(-2);
 	
     return false;
 

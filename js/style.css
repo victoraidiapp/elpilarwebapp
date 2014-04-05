@@ -508,3 +508,10 @@ margin-left:10px;
 .lista-variaciones .ui-listview li{
 margin-left:15px;	
 }
+
+#msg_loading .msg{
+display: block;
+position: absolute;
+width: 100%;
+top: 17px;	
+}
