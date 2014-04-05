@@ -41,7 +41,7 @@ function onDeviceReady() {
 		dispositivo=true;	
 	console.log("El dispositivo ya está listo");
 $("[data-role=panel]").panel().enhanceWithin();
-			obtenerImagenes();
+	obtenerImagenes();
 		//obtener imagenes portada
 		$("#home-btn-contacto").animate({opacity:1},'slow');
 		obtenerGaleria();
@@ -54,14 +54,14 @@ $("[data-role=panel]").panel().enhanceWithin();
         $('#maincursos').trigger('create');
 		$('#permisos').page();
 		$('#contacto').trigger('create');
-		$('#content-viewer [data-role="content"]').iscrollview();
+		$('#content-viewer [data-role="content"]').iscrollview();	
 		
 }
 
 jQuery(document).ready(function(){ 
 console.log("El documento ya está listo");
 
-
+	
 		
 		
 });
@@ -437,7 +437,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
     <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
  	
     </div>
-<div data-role="content" style="padding-top:30px"><iframe width="100%" height="600px" style="margin-top:30px" src="http://www.testbook.es/users" frameborder="0"></iframe></div>
+<div data-role="content" style="padding-top:30px"><iframe id="visor-tests" width="100%" height="600px" style="margin-top:30px" src="http://www.testbook.es/users" frameborder="0"></iframe></div>
 </div>
 <div data-role="page" id="info-clientes">
 <div data-role="header" data-position="fixed" data-theme="a">

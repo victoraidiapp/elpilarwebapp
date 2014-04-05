@@ -644,17 +644,17 @@ $(document).delegate('.ui-page', 'pageshow', function () {
 		case "cursos":
 		case "videos":
 			$( ":mobile-pagecontainer" ).pagecontainer("getActivePage").find('[data-role="content"]').iscrollview("scrollTo", 0, 0, 200, false);
-			
-		case "videos":
-		$(document).delegate('.yunero-feed','tap',function(){
+		break	
+	
+	}
+
+});
+$(document).delegate('.yunero-feed','tap',function(){
 		console.log("Queremos cargar el video");
         $('#yuneroVideoFrame').attr('src', 'http://www.youtube.com/embed/' + this.id);
 $( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:'slide'});
     })	
-		break;	
-	}
-
-});
+	
 $(document).delegate("#volver_desde_video","tap",function(){
 	window.history.go(-2);
 	
