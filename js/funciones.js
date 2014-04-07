@@ -611,7 +611,7 @@ return false;
 $(document).delegate('#home a','tap',function(){
 	$(this).parent().addClass('ui-loading-button');
 	//delete $.mobile.urlHistory.stack[0];
-   // $( ":mobile-pagecontainer" ).pagecontainer( "change",$(this).attr("href"),{transition:'slide',reverse: false, changeHash: false});
+   // $( ":mobile-pagecontainer" ).pagecontainer( "change",$(this).attr("href"),{transition:'fade',reverse: false, changeHash: false});
 	//return false;
    // $("#home").remove();             
                      
@@ -628,8 +628,8 @@ $(document).delegate('#menuelpilar a','tap',function(){
         }else if($(this).attr("href")=="#tests"){
 			var exito;
 			console.log("Queremos ejecutar una función del plugin");
-		cordova.exec(function(winParam) {exito=true;}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'slide'});},"FuncionesExternas","cargarTests",[1]);
-		
+		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"FuncionesExternas","cargarTests",[1]);
+		$('.ui-loading-button').removeClass('ui-loading-button');
 		return false;	
 		}
 	
@@ -659,7 +659,7 @@ $(document).delegate('.ui-page', 'pageshow', function () {
 $(document).delegate('.yunero-feed','tap',function(){
 		console.log("Queremos cargar el video");
         $('#yuneroVideoFrame').attr('src', 'http://www.youtube.com/embed/' + this.id);
-$( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:'slide'});
+$( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:'fade'});
     })	
 	
 $(document).delegate("#volver_desde_video","tap",function(){
@@ -698,7 +698,7 @@ $(document).delegate("#contacto #envio",'tap',function(){
 			
 			
 		}
-		$( ":mobile-pagecontainer" ).pagecontainer( "change","#respuesta-contacto",{transition:'slide'});
+		$( ":mobile-pagecontainer" ).pagecontainer( "change","#respuesta-contacto",{transition:'fade'});
 			
 	})
 })
@@ -721,7 +721,7 @@ function visualizarItem(){
 	contenido.append('<div style="height:20px"></div>');
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'fade'});
 	
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 	$('#content-viewer .lista_variaciones').listview('refresh');
@@ -744,7 +744,7 @@ $(document).delegate('#intensivillos .intensivillos','tap',function(){
 	//contenido.prepend('<img src="'+imagen+'" />');
 	contenido.append('<div style="height:20px"></div>');
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'fade'});
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 })
 
@@ -759,7 +759,7 @@ $(document).delegate('#empresas #lista_empresas li','tap',function(){
 	//contenido.prepend('<img src="'+imagen+'" />');
 	contenido.append('<div style="height:20px"></div>');
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'fade'});
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 })
 
@@ -795,7 +795,7 @@ $(document).delegate('#lista_clientes li','tap',function(){
                                     
                                    $("#lista_empresas").listview();
 								   $("#empresas .ui-header h1").text(titulo);
-                                    $( ":mobile-pagecontainer" ).pagecontainer( "change","#empresas",{transition:'slide'});
+                                    $( ":mobile-pagecontainer" ).pagecontainer( "change","#empresas",{transition:'fade'});
                                     }
                                     })
 
