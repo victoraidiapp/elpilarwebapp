@@ -625,13 +625,13 @@ $(document).delegate('#menuelpilar a','tap',function(){
            $(this).parent().removeClass('ui-loading-button');
 		   $("#menuelpilar").panel('close');
 		   return false;
-        }else if($(this).attr("href")=="#tests"){
+        }/*else if($(this).attr("href")=="#tests"){
 			var exito;
 			console.log("Queremos ejecutar una función del plugin");
 		cordova.exec(function(winParam) {exito=true;}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'slide'});},"FuncionesExternas","cargarTests",[1]);
 		
 		return false;	
-		}
+		}*/
 	
 })
 $(document).delegate('.ui-page', 'pageshow', function () {
