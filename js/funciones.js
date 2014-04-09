@@ -628,7 +628,7 @@ $(document).delegate('#menuelpilar a','tap',function(){
         }else if($(this).attr("href")=="#tests"){
 			var exito;
 			console.log("Queremos ejecutar una función del plugin");
-		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"FuncionesExternas","cargarTests",[1]);
+		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"LoadExtApp","cargarApp",['facilauto.movil.android']);
 		$('.ui-loading-button').removeClass('ui-loading-button');
 		return false;	
 		}
