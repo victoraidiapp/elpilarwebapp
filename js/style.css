@@ -502,11 +502,9 @@ margin-top:0px;
 .lista-variaciones h4{
 margin-left:10px;	
 }
-.lista-variaciones .ui-listview {
-margin-left:10px;	
-}
+
 .lista-variaciones .ui-listview li{
-margin-left:15px;	
+padding-left:35px;	
 }
 
 #msg_loading .msg{

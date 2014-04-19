@@ -187,15 +187,24 @@ function obtenerCursos(firstTime) {
 							
 							//Obtenemos las variantes de los cursos
 							var variaciones=miscursos[curso].variaciones;
-							var variaciones_str='<div class="ui-body ui-body-a ui-corner-all lista-variaciones"><h3 class="ui-bar ui-bar-a ui-corner-all">Variaciones del curso</h3>';
+							var variaciones_str='<div class="ui-body ui-body-a ui-corner-all lista-variaciones"><h3 class="ui-bar ui-bar-a ui-corner-all">Próximos Cursos</h3>';
 							for(v in variaciones){
-								variaciones_str=variaciones_str+'<h4>'+variaciones[v].titulo+'</h4><ul class="lista_variaciones" data-role="listview">'
+								if(v==98){//Es una variación de proximos cursos
+								variaciones_str=variaciones_str+'<ul class="lista_variaciones" data-role="listview">'
 								var varitems=variaciones[v].variantes;
+								delete varitems[118];
+								if(Object.keys(varitems).length>0){
 									for(vi in varitems){
-										variaciones_str=variaciones_str+'<li>'+varitems[vi]+'</li>';
+											variaciones_str=variaciones_str+'<li>'+varitems[vi]+'</li>';
+										
 									}
+								}else{
+									variaciones_str=variaciones_str+'<li>No hay cursos programados para las próximas semanas</li>';
+								}
 									
-							variaciones_str=variaciones_str+'</ul>';		
+							variaciones_str=variaciones_str+'</ul>';	
+								}
+									
 							}
 							variaciones_str=variaciones_str+'</div>';
 							console.log("La lista de variaciones "+variaciones_str);
