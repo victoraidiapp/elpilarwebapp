@@ -40,10 +40,16 @@ function onDeviceReady() {
 	navigator.splashscreen.hide();
 		dispositivo=true;	
 	console.log("El dispositivo ya está listo");
+
+		
+}
+
+jQuery(document).ready(function(){ 
+console.log("El documento ya está listo");
 $("[data-role=panel]").panel().enhanceWithin();
 	obtenerImagenes();
 		//obtener imagenes portada
-		$("#home-btn-contacto").animate({opacity:1},'slow');
+		$("#home-btn-tests").animate({opacity:1},'slow');
 		obtenerGaleria();
 		obtenerCursos(true);
 		obtenerPermisos(true);
@@ -55,12 +61,6 @@ $("[data-role=panel]").panel().enhanceWithin();
 		$('#permisos').page();
 		$('#contacto').trigger('create');
 		$('#content-viewer [data-role="content"]').iscrollview();	
-		
-}
-
-jQuery(document).ready(function(){ 
-console.log("El documento ya está listo");
-
 	
 		
 		
@@ -76,27 +76,27 @@ document.addEventListener("deviceready", onDeviceReady, false);
 <!-- Home -->
 <div id="menuelpilar" data-role="panel"  data-theme="a" data-display="reveal" data-position="left" >
         
-        <img src="js/images/logo_resplandor.png" width="100%"/>
+        <img src="js/images/logo_resplandor.png" width="80%" style="display:block;margin-left:auto;margin-right:auto"/>
         
         <table width="80%" align="center" style="width:80%">
         	<tr>
-                <td width="50%"><a href="#permisos" data-prefetch  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%" src="js/images/icono-permisos-home.png"/></a>Permisos</td>
-                <td width="50%"><a href="#maincursos"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%"  src="js/images/icono-cursos-home.png"/></a>Cursos</td>
+                <td width="50%"><a href="#permisos" data-prefetch  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/icono-permisos-home.png"/></a>Permisos</td>
+                <td width="50%"><a href="#maincursos"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%"  src="js/images/icono-cursos-home.png"/></a>Cursos</td>
                 
             </tr>
             
             <tr>
-                <td width="50%"><a href="#avisos"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%" src="js/images/icono-radio-home.png"/></a>Avisos</td>
-                <td width="50%"><a href="#galeria"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%" src="js/images/icono-galeria-home.png"/></a>Galeria</td>
+                <td width="50%"><a href="#avisos"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/icono-radio-home.png"/></a>Avisos</td>
+                <td width="50%"><a href="#galeria"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/icono-galeria-home.png"/></a>Galeria</td>
             </tr>
             <tr>
                 
-                <td width="50%"><a href="#clientes"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%" src="js/images/icono-cliente-home.png"/></a>Clientes</td>
-                <td width="50%"><a href="#contacto"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%" src="js/images/icon-contacto-home.png"/></a>Contacto</td>
+                <td width="50%"><a href="#clientes"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/icono-cliente-home.png"/></a>Clientes</td>
+                <td width="50%"><a href="#contacto"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/icon-contacto-home.png"/></a>Contacto</td>
             </tr>
             <tr>
                 
-                <td  width="50%"><a href="#tests"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:80%" width="80%" src="js/images/btn-tests.png"/></a>Tests</td>
+                <td  width="50%"><a href="#tests"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/btn-tests.png"/></a>Tests</td>
                 
             </tr>
         </table>
@@ -141,7 +141,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             <tr>
             		<td width="33%" style="width:33%" id="home-btn-galeria"><a href="#galeria"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-galeria-home.png"/></a>Galeria</td>
                     <td width="33%" style="width:33%" id="home-btn-clientes"><a href="#clientes"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/icono-cliente-home.png"/></a>Clientes</td>
-                    <td width="33%" style="width:33%" id="home-btn-tests"><a href="#tests"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/btn.tests.png"/></a>Tests</td>
+                    <td width="33%" style="width:33%" id="home-btn-tests"><a href="#tests"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/btn-tests.png"/></a>Tests</td>
             </tr>
         </table>	
         
