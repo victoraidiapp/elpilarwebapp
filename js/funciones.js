@@ -622,8 +622,15 @@ $(document).delegate('#home a','tap',function(){
 	//delete $.mobile.urlHistory.stack[0];
    // $( ":mobile-pagecontainer" ).pagecontainer( "change",$(this).attr("href"),{transition:'fade',reverse: false, changeHash: false});
 	//return false;
-   // $("#home").remove();             
-                     
+   // $("#home").remove();  
+   console.log("El destino es "+$(this).attr("href"));           
+       if($(this).attr("href")=="#tests"){
+			var exito;
+			console.log("Queremos ejecutar una función del plugin LoadApp");
+		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"LoadApp","cargarApp",['facilauto.movil.android']);
+		$('.ui-loading-button').removeClass('ui-loading-button');
+		return false;	
+		}              
 
 })
 
@@ -636,8 +643,8 @@ $(document).delegate('#menuelpilar a','tap',function(){
 		   return false;
         }else if($(this).attr("href")=="#tests"){
 			var exito;
-			console.log("Queremos ejecutar una función del plugin");
-		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"LoadExtApp","cargarApp",['facilauto.movil.android']);
+			console.log("Queremos ejecutar una función del plugin LoadApp");
+		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"LoadApp","cargarApp",['facilauto.movil.android']);
 		$('.ui-loading-button').removeClass('ui-loading-button');
 		return false;	
 		}
