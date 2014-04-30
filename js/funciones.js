@@ -10,6 +10,8 @@ var pagesIntensivo=1;
 var paginasIntensivo=1;
 var pagesCliente=1;
 var paginasCliente=1;
+var pagesCalendario=1;
+var paginascalendario=1;
 var misfotos;
 var miscursos;
 var misavisos;
@@ -228,6 +230,9 @@ function obtenerCursos(firstTime) {
 						$('#cursos').trigger('create');
 						$('#cursos [data-role="content"]').iscrollview("refresh");
 						//$('#cursos [data-role="content"]').refresh();
+						if(pagesCurso>paginascursos){
+						$("#mascursos").hide();	
+						}
 					}
 		})
 		
@@ -295,6 +300,9 @@ function obtenerPermisos(firstTime) {
 						}
 						
 						pagesPermiso++;
+						if(pagesPermiso>paginaspermisos){
+						$("#maspermisos").hide();	
+						}
 						$('#permisos').trigger('create');
 						$('#permisos [data-role="content"]').iscrollview("refresh");
 					}
@@ -362,6 +370,9 @@ function obtenerCertificados(firstTime) {
 						}
 						
 						pagesCertificado++;
+						if(pagesCertificado>paginascertificado){
+						$("#mascertificados").hide();	
+						}
 						$('#certificados').trigger('create');
 						$('#certificados [data-role="content"]').iscrollview("refresh");
 					}
@@ -424,6 +435,9 @@ function obtenerAvisos(firstTime) {
 						
 						
 						pagess++;
+						if(pagess>paginasavisos){
+						$("#masavisos").hide();	
+						}
 						$('#avisos').trigger('create');
 						$('#avisos [data-role="content"]').iscrollview("refresh");
 						
@@ -453,6 +467,8 @@ function obtenerAvisos(firstTime) {
 				}
 
 							var data = {
+								count:5,
+								page:pagesCalendario
 				
 				};
 				
@@ -461,6 +477,7 @@ function obtenerAvisos(firstTime) {
 		console.log('El servidor me ha dicho: ' + objjson10);
 				if(firstTime){
 					itemsCargados++;
+					
 					refrescarCargaInicial();
 					$("#intensivillos.apelpilar-loading").removeClass("apelpilar-loading");
 					$(document).delegate('#masintensivos','tap',function(){
@@ -472,7 +489,7 @@ function obtenerAvisos(firstTime) {
 				}
 					if(objjson10.status=="ok"){
 						
-						
+						paginascalendario=objjson10.pages;
 						var misintensivos=objjson10.cursos;
 						for(intensivo in misintensivos){
 							var finicio=misintensivos[intensivo].start;
@@ -509,12 +526,15 @@ function obtenerAvisos(firstTime) {
 							+'<div class="date"><span class="month">'+mesn+'</span><span class="day">'+dia+'</span><span class="weekday">'+weekday+'</span></div>'
                	             +'<div class="eventos popupp">'
 							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span></div>'
-						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>")+'</div></div></div>'
+						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>").replace(/\<a/g,"<a class='external_link'")+'</div></div></div>'
 							 +'</div>'); 
 							 
 					
 				}
-				
+				pagesCalendario++;
+				if(pagesCalendario>paginascalendario){
+				$('#masintensivos').hide();	
+				}
 						 $('#calendario').trigger('create');
 					$('#calendario [data-role="content"]').iscrollview("refresh");
 						
@@ -617,6 +637,14 @@ return false;
 	 
 */
 /*	DELEGACIONES */
+
+//LINKS EXTERNOS
+
+$(document).on('tap','a.external_link',function(){
+	console.log("Me quieres llevar a "+$(this).attr("href"));
+	navigator.app.loadUrl($(this).attr("href"), { openExternal:true })
+	return false;
+})
 $(document).delegate('#home a','tap',function(){
 	$(this).parent().addClass('ui-loading-button');
 	//delete $.mobile.urlHistory.stack[0];
