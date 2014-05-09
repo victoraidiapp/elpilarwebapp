@@ -40,14 +40,6 @@ function onDeviceReady() {
 	navigator.splashscreen.hide();
 		dispositivo=true;	
 	console.log("El dispositivo ya está listo");
-
-	
-		
-		
-}
-
-jQuery(document).ready(function(){ 
-console.log("El documento ya está listo");
 $("[data-role=panel]").panel().enhanceWithin();
 	obtenerImagenes();
 		//obtener imagenes portada
@@ -63,6 +55,14 @@ $("[data-role=panel]").panel().enhanceWithin();
 		$('#permisos').page();
 		$('#contacto').trigger('create');
 		$('#content-viewer [data-role="content"]').iscrollview();	
+	
+		
+		
+}
+
+jQuery(document).ready(function(){ 
+console.log("El documento ya está listo");
+
 		
 });
 
