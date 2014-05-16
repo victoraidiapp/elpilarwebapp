@@ -10,11 +10,14 @@ var pagesIntensivo=1;
 var paginasIntensivo=1;
 var pagesCliente=1;
 var paginasCliente=1;
+var pagesCalendario=1;
+var paginascalendario=1;
 var misfotos;
 var miscursos;
 var misavisos;
 var totalItemsCarga=0;
 var itemsCargados=0;
+var scrollpermisos;
 var dias_semana = new Array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado");
 var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre", "Diciembre");	
 var dispositivo=false;
@@ -187,15 +190,24 @@ function obtenerCursos(firstTime) {
 							
 							//Obtenemos las variantes de los cursos
 							var variaciones=miscursos[curso].variaciones;
-							var variaciones_str='<div class="ui-body ui-body-a ui-corner-all lista-variaciones"><h3 class="ui-bar ui-bar-a ui-corner-all">Variaciones del curso</h3>';
+							var variaciones_str='<div class="ui-body ui-body-a ui-corner-all lista-variaciones"><h3 class="ui-bar ui-bar-a ui-corner-all">Próximos Cursos</h3>';
 							for(v in variaciones){
-								variaciones_str=variaciones_str+'<h4>'+variaciones[v].titulo+'</h4><ul class="lista_variaciones" data-role="listview">'
+								if(v==98){//Es una variación de proximos cursos
+								variaciones_str=variaciones_str+'<ul class="lista_variaciones" data-role="listview">'
 								var varitems=variaciones[v].variantes;
+								delete varitems[118];
+								if(Object.keys(varitems).length>0){
 									for(vi in varitems){
-										variaciones_str=variaciones_str+'<li>'+varitems[vi]+'</li>';
+											variaciones_str=variaciones_str+'<li>'+varitems[vi]+'</li>';
+
 									}
-									
-							variaciones_str=variaciones_str+'</ul>';		
+								}else{
+									variaciones_str=variaciones_str+'<li>No hay cursos programados para las próximas semanas</li>';
+								}
+
+							variaciones_str=variaciones_str+'</ul>';	
+								}
+
 							}
 							variaciones_str=variaciones_str+'</div>';
 							console.log("La lista de variaciones "+variaciones_str);
@@ -219,6 +231,9 @@ function obtenerCursos(firstTime) {
 						$('#cursos').trigger('create');
 						$('#cursos [data-role="content"]').iscrollview("refresh");
 						//$('#cursos [data-role="content"]').refresh();
+						if(pagesCurso>paginascursos){
+						$("#mascursos").hide();	
+						}
 					}
 		})
 		
@@ -231,15 +246,10 @@ function obtenerPermisos(firstTime) {
 	
 			if(pagesPermiso<=paginaspermisos){
 				if(!firstTime){
-					
-						 $.mobile.loading( "show", {
-					text: "Cargando permisos",
-					textVisible: true,
-					theme: "a",
-					textonly: false,
-					
-						 });
+						
+						 jQuery("#maspermisos").addClass('loading');
 				}else{
+					
 					totalItemsCarga++;
 					refrescarCargaInicial();
 				}
@@ -254,6 +264,7 @@ function obtenerPermisos(firstTime) {
 				
 		jQuery.getJSON("http://www.autoescuelaselpilar.com/api/getProductsByCategory/", data, function(objjson5) {
 		console.log('El servidor me ha dicho de los permisos: ' + objjson5);
+				jQuery("#maspermisos").removeClass('loading');
 				 if(firstTime){
 					 itemsCargados++;
 					refrescarCargaInicial();
@@ -264,30 +275,34 @@ function obtenerPermisos(firstTime) {
 					 })
 					 
 				 }else{
-					 $.mobile.loading("hide");
+					 
 				 }
 					if(objjson5.status=="ok"){
 						paginaspermisos=objjson5.pages;
 						miscursos=objjson5.posts;
 						for(curso in miscursos){
-							jQuery("#permisillos").append(
-			'<div class="avis clear">'
+							jQuery("#permisos ul.list").append(
+			'<li class="comp" data-gotopage="visor-item">'
 			
 			//+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop"><img class="left" width="100px"  src="'+miscursos[curso].thumbnail+'"/></a>'
 //			+'<div class="tit_curso">'
 //			+'<a href="#'+miscursos[curso].id+'" data-rel="popup" class=" popupp" data-transition="pop">'+miscursos[curso].title+'</a>'
 			//+'<div data-role="popup" id="'+miscursos[curso].id+'" class="verpopup"><a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><p>'+miscursos[curso].content+'</p></div>'
-			+'<img data-iden='+curso+' class="left popupp" width="100px"  src="'+miscursos[curso].post_thumbnail+'"/>'
+			+'<aside><span class="icon" style="background-image:url('+miscursos[curso].post_thumbnail+')"></span></aside>'
 		
-		+'<div   data-iden='+curso+' class="tit_curso popupp" >'+miscursos[curso].post_title+'</div><div class="item_desc">'+miscursos[curso].post_content.replace(/\n/g,"<br/>")+'</div>'
+		+'<div   data-iden='+curso+' class="tit_curso popupp" ><h3>'+miscursos[curso].post_title+'</h3><span class="item_desc">'+miscursos[curso].post_content.replace(/\n/g,"<br/>")+'</span></div>'
 		+''
 			
-			+'</div>');
+			+'</li>');
 						}
 						
 						pagesPermiso++;
-						$('#permisos').trigger('create');
-						$('#permisos [data-role="content"]').iscrollview("refresh");
+						if(pagesPermiso>paginaspermisos){
+						$("#maspermisos").hide();	
+						}
+						
+						//$('#permisos').trigger('create');
+						//$('#permisos [data-role="content"]').iscrollview("refresh");
 					}
 		})
 		
@@ -353,6 +368,9 @@ function obtenerCertificados(firstTime) {
 						}
 						
 						pagesCertificado++;
+						if(pagesCertificado>paginascertificado){
+						$("#mascertificados").hide();	
+						}
 						$('#certificados').trigger('create');
 						$('#certificados [data-role="content"]').iscrollview("refresh");
 					}
@@ -415,6 +433,9 @@ function obtenerAvisos(firstTime) {
 						
 						
 						pagess++;
+						if(pagess>paginasavisos){
+						$("#masavisos").hide();	
+						}
 						$('#avisos').trigger('create');
 						$('#avisos [data-role="content"]').iscrollview("refresh");
 						
@@ -444,6 +465,8 @@ function obtenerAvisos(firstTime) {
 				}
 
 							var data = {
+								count:5,
+								page:pagesCalendario
 				
 				};
 				
@@ -452,6 +475,7 @@ function obtenerAvisos(firstTime) {
 		console.log('El servidor me ha dicho: ' + objjson10);
 				if(firstTime){
 					itemsCargados++;
+					
 					refrescarCargaInicial();
 					$("#intensivillos.apelpilar-loading").removeClass("apelpilar-loading");
 					$(document).delegate('#masintensivos','tap',function(){
@@ -463,7 +487,7 @@ function obtenerAvisos(firstTime) {
 				}
 					if(objjson10.status=="ok"){
 						
-						
+						paginascalendario=objjson10.pages;
 						var misintensivos=objjson10.cursos;
 						for(intensivo in misintensivos){
 							var finicio=misintensivos[intensivo].start;
@@ -500,12 +524,15 @@ function obtenerAvisos(firstTime) {
 							+'<div class="date"><span class="month">'+mesn+'</span><span class="day">'+dia+'</span><span class="weekday">'+weekday+'</span></div>'
                	             +'<div class="eventos popupp">'
 							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span></div>'
-						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>")+'</div></div></div>'
+						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>").replace(/\<a/g,"<a class='external_link'")+'</div></div></div>'
 							 +'</div>'); 
 							 
 					
 				}
-				
+				pagesCalendario++;
+				if(pagesCalendario>paginascalendario){
+				$('#masintensivos').hide();	
+				}
 						 $('#calendario').trigger('create');
 					$('#calendario [data-role="content"]').iscrollview("refresh");
 						
@@ -608,13 +635,22 @@ return false;
 	 
 */
 /*	DELEGACIONES */
+
+//LINKS EXTERNOS
+//MOSTRAR MENU
+$(document).on('tap','a.menu-button',function(){
+	$.UIGoToArticle('#home');
+})
+
+$(document).on('tap','a.external_link',function(){
+	console.log("Me quieres llevar a "+$(this).attr("href"));
+	navigator.app.loadUrl($(this).attr("href"), { openExternal:true })
+	return false;
+})
 $(document).delegate('#home a','tap',function(){
-	$(this).parent().addClass('ui-loading-button');
-	//delete $.mobile.urlHistory.stack[0];
-   // $( ":mobile-pagecontainer" ).pagecontainer( "change",$(this).attr("href"),{transition:'slide',reverse: false, changeHash: false});
-	//return false;
-   // $("#home").remove();             
-                     
+	//$(this).parent().addClass('ui-loading-button');
+   console.log("El destino es "+$(this).attr("href"));           
+    $.UIGoToArticle($(this).attr("href"));    
 
 })
 
@@ -627,39 +663,18 @@ $(document).delegate('#menuelpilar a','tap',function(){
 		   return false;
         }else if($(this).attr("href")=="#tests"){
 			var exito;
-			console.log("Queremos ejecutar una función del plugin");
-		cordova.exec(function(winParam) {exito=true;}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'slide'});},"FuncionesExternas","cargarTests",[1]);
-		
+			console.log("Queremos ejecutar una función del plugin LoadApp");
+		cordova.exec(function(winParam) {exito=true;$('.ui-loading-button').removeClass('ui-loading-button');}, function(error) {$( ":mobile-pagecontainer" ).pagecontainer( "change","#tests",{transition:'fade'});},"LoadApp","cargarApp",['facilauto.movil.android']);
+		$('.ui-loading-button').removeClass('ui-loading-button');
 		return false;	
 		}
 	
 })
-$(document).delegate('.ui-page', 'pageshow', function () {
-    //Your code for each page load here
-	$('.ui-loading-button').removeClass('ui-loading-button');
-	//$(this).find('[data-role="content"]').iscrollview("refresh");
-	var pagina=$( ":mobile-pagecontainer" ).pagecontainer("getActivePage").attr("id");
-	switch(pagina){
-		case "content-viewer":
-		case "permisos":
-		case "calendario":
-		case "avisos":
-		case "galeria":
-		case "clientes":
-		case "empresas":
-		case "certificados":
-		case "cursos":
-		case "videos":
-			$( ":mobile-pagecontainer" ).pagecontainer("getActivePage").find('[data-role="content"]').iscrollview("scrollTo", 0, 0, 200, false);
-		break	
-	
-	}
 
-});
 $(document).delegate('.yunero-feed','tap',function(){
 		console.log("Queremos cargar el video");
         $('#yuneroVideoFrame').attr('src', 'http://www.youtube.com/embed/' + this.id);
-$( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:'slide'});
+$( ":mobile-pagecontainer" ).pagecontainer( "change","#visor-video",{transition:'fade'});
     })	
 	
 $(document).delegate("#volver_desde_video","tap",function(){
@@ -698,7 +713,7 @@ $(document).delegate("#contacto #envio",'tap',function(){
 			
 			
 		}
-		$( ":mobile-pagecontainer" ).pagecontainer( "change","#respuesta-contacto",{transition:'slide'});
+		$( ":mobile-pagecontainer" ).pagecontainer( "change","#respuesta-contacto",{transition:'fade'});
 			
 	})
 })
@@ -721,7 +736,7 @@ function visualizarItem(){
 	contenido.append('<div style="height:20px"></div>');
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
 	
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'fade'});
 	
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 	$('#content-viewer .lista_variaciones').listview('refresh');
@@ -744,7 +759,7 @@ $(document).delegate('#intensivillos .intensivillos','tap',function(){
 	//contenido.prepend('<img src="'+imagen+'" />');
 	contenido.append('<div style="height:20px"></div>');
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'fade'});
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 })
 
@@ -759,7 +774,7 @@ $(document).delegate('#empresas #lista_empresas li','tap',function(){
 	//contenido.prepend('<img src="'+imagen+'" />');
 	contenido.append('<div style="height:20px"></div>');
 	$('#content-viewer div[data-role="content"] .iscroll-content').append(contenido);
-	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'slide'});
+	$( ":mobile-pagecontainer" ).pagecontainer( "change","#content-viewer",{transition:'fade'});
 	$('#content-viewer [data-role="content"]').iscrollview('refresh');
 })
 
@@ -795,9 +810,25 @@ $(document).delegate('#lista_clientes li','tap',function(){
                                     
                                    $("#lista_empresas").listview();
 								   $("#empresas .ui-header h1").text(titulo);
-                                    $( ":mobile-pagecontainer" ).pagecontainer( "change","#empresas",{transition:'slide'});
+                                    $( ":mobile-pagecontainer" ).pagecontainer( "change","#empresas",{transition:'fade'});
                                     }
                                     })
 
                      
                      })
+					 
+
+//NUEVAS DELEGACIONES
+jQuery(document).on('tap','#permisos li',function(){
+	var titulo=jQuery(this).find('h3').text();
+	var contenido=jQuery(this).find('.item_desc').html();
+	jQuery('#visor-item a[data-gotopage]').attr('data-gotopage','permisos');
+	
+	jQuery('h1.visor-item').text(titulo);
+	jQuery('#visor-item li').html(contenido);
+})
+
+jQuery(document).on('tap','.more-button',function(){
+	jQuery(this).addClass('loading');
+})
+

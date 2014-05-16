@@ -803,11 +803,13 @@ Version: 3.5.3
     // Handle navigation list items:
     ////////////////////////////////
     $('body').on('singletap doubletap', 'li', function() {
+		//alert("Me has tocado");
       if ($.isNavigating) return;
       if (!this.hasAttribute('data-goto')) return;
       if (!this.getAttribute('data-goto')) return;
       if (!document.getElementById(this.getAttribute('data-goto'))) return;
       if ($(this).parent()[0].classList.contains('deletable')) return;
+	  
       var destinationHref = '#' + this.getAttribute('data-goto');
       $(destinationHref).addClass('navigable');
       var destination = $(destinationHref);
@@ -1300,11 +1302,19 @@ Version: 3.5.3
   });
  
  
+ 
   $.extend({
     ///////////////////////
     // Setup Paging Control
     ///////////////////////
       UIPaging : function ( ) {
+		var updateNav=function(){
+			console.log("Quieres actualziar el nav");
+		if(currentArticle.find('section.current').find('nav.to-paged')){
+		var nav=currentArticle.find('section.current').find('nav.to-paged');
+		$('.segmented.paging').html(nav.html());
+		}
+		}
         var currentArticle = $('.segmented.paging').closest('nav').next();
         if (window && window.jQuery && $ === window.jQuery) {
           if ($('.segmented.paging').hasClass('horizontal')) {
@@ -1324,6 +1334,21 @@ Version: 3.5.3
         var sections = function() {
           return currentArticle.children().length;
         };
+		$('body').on($.eventStart,'[data-gotopage]',function(){
+			
+			var $this=$(this);
+			console.log("Me tocas "+"#"+this.getAttribute('data-gotopage'));
+			var target=currentArticle.find("#"+this.getAttribute('data-gotopage'));
+			var currentSection;
+          currentSection = $('section.current');
+		  currentSection.removeClass('current').addClass('next');
+		//  currentArticle.children().removeClass('next').removeClass('previous');
+		  target.removeClass('next').removeClass('previous').addClass('current');
+         
+		  
+			updateNav();
+		})
+		
         $('.segmented.paging').on($.eventStart, '.button:first-of-type', function() {
           if (sections() === 1) return;
           var $this = $(this);
@@ -1364,7 +1389,10 @@ Version: 3.5.3
             $this.removeClass('selected');
           }, 250);
         });
+		updateNav();
       }
+	  
+	  
   });
  
  

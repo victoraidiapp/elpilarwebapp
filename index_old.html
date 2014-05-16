@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1">
+<title>AUTOESCUELAS EL PILAR</title>
+<link href="js/jquery.mobile-1.4.0.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="js/elPilar.min.css" />
+<link rel="stylesheet" href="js/chui-win-3.5.3.css" />
+<!--<link rel="stylesheet" href="js/jquery.mobile.icons.min.css" />
+<link rel="stylesheet" href="js/jquery.mobile.iscrollview.css"/>
+    <link rel="stylesheet" href="js/jquery.mobile.iscrollview-pull.css"/>-->
+<!--<link href="js/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css">-->
+<link href="js/style.css" rel="stylesheet" type="text/css">
+
+ 
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+<script type="text/javascript" src="js/chui-3.5.3.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/yunero.min.js"></script>
+<script type="text/javascript" src="js/responsiveslides.min.js"></script>
+<script type="text/javascript" src="js/jquery.jpanelmenu.min.js"></script>
+<!-- <script src="js/iscroll.js"></script>
+    <script src="js/jquery.mobile.iscrollview.js"></script>-->
+<script type="text/javascript" src="js/funciones.js"></script>
+
+<script type="text/javascript">
+//youtube URL (mandatory) -----------------------------
+ var youTubeURL = "https://www.youtube.com/user/AUTOESCUELASELPILAR"; 
+ //optional parameters ---------------------------------
+ //width and height of your widget
+ var yuneroWidgetHeight = 400; 
+ var yuneroWidgetWidth = 300; 
+ var yuneroVideoHeight = 200; //works with plugin in download 2
+
+
+function onDeviceReady() {
+    // Now safe to use device APIs
+	
+	navigator.splashscreen.hide();
+		dispositivo=true;	
+	console.log("El dispositivo ya está listo");
+
+	
+		//$('#content-viewer [data-role="content"]').iscrollview();	
+	
+		
+		
+}
+
+jQuery(document).ready(function(){ 
+console.log("El documento ya está listo");
+obtenerImagenes();
+		//obtener imagenes portada
+		$("#home-btn-tests").animate({opacity:1},'slow');
+		obtenerGaleria();
+		obtenerCursos(true);
+		obtenerPermisos(true);
+		obtenerCertificados(true);
+		obtenerIntensivos(true);
+		obtenerAvisos(true);
+        obtenerClientes();
+        $('#maincursos').trigger('create');
+		$('#permisos').page();
+		$('#contacto').trigger('create');
+		
+});
+
+document.addEventListener("deviceready", onDeviceReady, false);
+</script>
+</head>
+
+
+<body>
+ 
+<nav class="current" style="display:none"></nav>
+
+<article id="home" class="current">
+  
+    
+    <section>
+    <img id="logo-resplandor" src="js/images/logo_resplandor.png" width="100%"/>
+    
+    <div class="slidegaleria">
+    	<ul class="rslides">
+
+		</ul>
+       
+  	</div>
+ <div id="msg_loading" style="position:absolute;bottom:1%;width:95%;text-align:center;font-size:0.8em"><div class="ui-hor-loading"></div><span class="msg">Cargando datos...</span></div>
+    
+        	
+               
+        <table width="90%" style="width:90%">
+        	<tr>
+            		<td width="33%" style="width:33%"  id="home-btn-permisos"><a href="#permisos"  data-transition="fade" data- ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-permisos-home.png"/></a>Permisos</td>
+                    <td width="33%" style="width:33%" id="home-btn-maincursos"><a href="#maincursos"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%"  src="js/images/icono-cursos-home.png"/></a>Cursos</td>
+                    <td width="33%" style="width:33%" id="home-btn-avisos"><a href="#avisos"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-radio-home.png"/></a>Avisos</td>
+            </tr>
+            
+            <tr>
+            		<td width="33%" style="width:33%" id="home-btn-galeria"><a href="#galeria"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img style="width:100%" width="100%" src="js/images/icono-galeria-home.png"/></a>Galeria</td>
+                    <td width="33%" style="width:33%" id="home-btn-clientes"><a href="#clientes"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/icono-cliente-home.png"/></a>Clientes</td>
+                    <td width="33%" style="width:33%" id="home-btn-tests"><a href="#tests"  data-transition="fade" ><div class="ui-elpilar-loading"></div><img  style="width:100%" width="100%" src="js/images/btn-tests.png"/></a>Tests</td>
+            </tr>
+        </table>	
+        
+            <!--<ul >
+           
+                <li >
+                <div class="ui-bar ui-bar-e">
+                    <a href="#permisos"  data-transition="fade" >
+                        Permisos
+                    </a>
+                    </div>
+                </li>
+                <li>
+                <div class="ui-bar ui-bar-e">
+                    <a href="#maincursos" data-transition="fade" >
+                        Cursos
+                    </a>
+                    </div>
+                </li>
+                <li>
+                <div class="ui-bar ui-bar-e">
+                    <a href="#contacto" data-transition="fade" >
+                        Contacto
+                    </a>
+                    </div>
+                </li>
+                <li>
+                <div class="ui-bar ui-bar-e">
+                    <a href="#galeria" data-transition="fade" >
+                        Galería
+                    </a>
+                    </div>
+                </li>
+                <li>
+                <div class="ui-bar ui-bar-e">
+                    <a href="#clientes" data-transition="fade" >
+                        Cliente
+                    </a>
+                    </div>
+                </li>
+                <li>
+                <div class="ui-bar ui-bar-e">
+                    <a href="#avisos" data-transition="fade" >
+                        Avisos
+                    </a>
+                    </div>
+                </li>
+               
+            </ul>-->
+        
+
+  
+    
+	</div>
+   
+</section>
+
+</article>
+
+<nav class="next"><a href="#menuelpilar" class="menu-button"><img src="js/images/btn-menu.png" height="36px"/></a><h1>Permisos</h1></nav>
+<article id="permisos" class="next">
+    <section>
+ 	
+    	
+       <div id="permisillos" class="apelpilar-loading"></div>
+
+        <div  id="maspermisos" class="boton ">Más permisos</div>
+        
+   </section>
+</article>
+
+<nav class="next"><a href="#menuelpilar" class="menu-button"><img src="js/images/btn-menu.png" height="36px"/></a><h1>Permisos</h1></nav>
+<article id="otro" class="previous">
+    <section>
+ 	
+    	
+       <div id="permisillos" class="apelpilar-loading"></div>
+
+        <div  id="maspermisos" class="boton ">Más permisos</div>
+        
+   </section>
+</article>
+<!--
+<article id="maincursos" class="next">
+<section>
+
+    	
+        <ul class="list">
+        	<li><a href="#calendario">Calendario</a></li>
+            <li><a href="#cursos">Cursos</a></li>
+            <li><a href="#certificados">Certificados profesionales</a></li>
+        </ul>
+        
+    </section>
+</article>
+
+<nav class="next"><a href="#menuelpilar" class="back"><img src="js/images/btn-volver.png" height="36px"/></a><h1>Calendario</h1></nav>
+<article data-role="page" id="calendario">
+    
+    
+        <section>
+    	 <div id="intensivillos" class="apelpilar-loading"></div>
+         <div   class="popy no_visible">
+        	<div  id="atras" class="botoncito ">Atras</div>
+            <div class="up"></div>
+            <div></div>
+            <div  id="atras" class="boton ">Atras</div>
+        </div>
+        <div  id="masintensivos" class="boton ">Más cursos </div>
+    </section>
+</article>
+
+
+
+
+<div data-role="page" id="avisos" >
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1></h1>
+    <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+ 	
+    </div>
+    
+        <div data-role="content" data-iscroll>
+    	 <div id="tablon" class="apelpilar-loading"></div>
+
+        <div  id="masavisos" class="boton ">Más Avisos </div>
+    </div>
+</div>
+
+<div data-role="page" id="contacto">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1></h1>
+        <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+        
+    </div>
+	
+    
+    
+    <div id="container" data-role="content" data-iscroll>
+    	
+    	
+        <form action="" method="post" class="">
+            
+			<p>Tu nombre (requerido)<br>
+   			<input id="nombre" type="text" name="nombre" value="" class="" size="40"/></p>
+			<p>Tu Email (requerido)<br>
+    		<input id="email" type="text" name="email" value="" class="" size="40"/></p>
+			<p>Tema<br>
+    		<select id="tema" name="tema" class="">
+            	<option value="">---</option>
+                <option value="Solicitud de información">Solicitud de 			información</option>
+                <option value="Sugerencias - Quejas">Sugerencias - Quejas</option>
+            </select></p>
+            <p>Asunto<br>
+            <input id="asunto" type="text" name="asunto" value="" class="" size="40"			/> </p>
+            <p>Tu Mensaje<br>
+            <textarea id="mensaje" name="mensaje" class="" cols="40" rows="10"></textarea></p>
+            <p><input id="envio" type="button" value="Enviar" class=""></p>
+        </form>
+        
+        
+        
+        
+        
+    </div>
+</div>
+
+
+<div data-role="page" id="galeria">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1>Fotos</h1>
+        <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+        <a href="#videos" data-transition="fade" data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-youtube.png" height="30px"/></a>
+    </div>
+
+    
+    
+    <div data-role="content" data-iscroll>
+        <div id="gallery">
+            
+        </div>
+        <div  id="masgalerias" class="boton ">Más imágenes</div>
+        
+        
+        
+		
+ 	 	
+        
+    </div>
+</div>
+</div>
+
+
+<div data-role="page" id="clientes">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1></h1>
+        <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+        <a href="#info-clientes" data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right" data-transition="fade"><img src="js/images/btn-info.png" height="32px"/></a>
+        
+    </div>
+
+    <div id="container" data-role="content" data-iscroll>
+    <div id="tarjeta_cliente"></div>
+    	<div id="clientillos">
+            <ul id="lista_clientes" data-role="listview" data-inset="true">
+                
+            </ul>
+        </div>
+        
+    </div>
+</div>
+
+<div data-role="page" id="empresas">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1></h1>
+        
+        <a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
+        
+    </div>
+    
+    <div id="container" data-role="content" data-iscroll>
+
+        
+    </div>
+</div>
+
+<div data-role="page" id="content-viewer">
+<div data-role="header" data-position="fixed" data-theme="a">
+        <h1>Contenido</h1>
+        <a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
+        
+    </div>
+    
+    <div data-role="content" data-iscroll></div>
+</div>
+
+<div data-role="page" id="certificados">
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1>Certificados</h1>
+    <a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
+ 	
+    </div>
+   
+        <div data-role="content" data-iscroll>
+    	
+       <div id="certificadillos" class="apelpilar-loading"></div>
+
+        <div  id="mascertificados" class="boton ">Más certificados</div>
+        
+   </div>
+</div>
+<div data-role="page" id="cursos">
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1>Cursos</h1>
+    <a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
+ 	
+    </div>
+   
+        <div data-role="content" data-iscroll>
+    	
+       <div id="cursillos" class="apelpilar-loading"></div>
+
+        <div  id="mascursos" class="boton ">Más cursos</div>
+        
+   </div>
+</div>
+
+
+
+<div data-role="page" id="videos">
+<div data-role="header" data-position="fixed" data-theme="a">
+        <h1>Videos</h1>
+        <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+        <a href="#galeria" data-transition="fade"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-fotos.png" height="36px"/></a>
+        
+    </div>
+	
+    
+    <div data-role="content" id="yunero" data-iscroll>
+	
+        
+    </div>
+</div>
+<div data-role="page" id="visor-video">
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1>Video</h1>
+    
+    <a id="volver_desde_video" href="#" data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-left"><img src="js/images/btn-volver.png" height="32px" /></a>
+ 	
+    </div>
+<div data-role="content" style="padding-top:30px"><iframe id="yuneroVideoFrame" width="100%" src="" height="200" frameborder="0"></iframe></div>
+</div>
+
+<div data-role="page" id="tests">
+    <div data-role="header" data-position="fixed" data-theme="a">
+   	<h1>Test</h1>
+    <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+ 	
+    </div>
+<div data-role="content" style="padding-top:30px"><iframe id="visor-tests" width="100%" height="600px" style="margin-top:30px" src="http://www.testbook.es/users" frameborder="0"></iframe></div>
+</div>
+<div data-role="page" id="info-clientes">
+<div data-role="header" data-position="fixed" data-theme="a">
+   	<h1>Condiciones Cliente</h1>
+    <a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
+ 	
+    </div>
+<div data-role="content" data-iscroll>
+<h2 style="padding-top:30px">¿En que consiste la tarjeta cliente "Grupo Autoescuelas El Pilar"?</h2>
+<p>La tarjeta cliente " Grupo Autoescuelas El Pilar " esta proyectada y realizada con el fin que los clientes de las diferentes empresas que forman el grupo de esta tarjeta se vean favorecidos por distintos descuentos en los establecimientos correspondientes.</p>
+<h2>¿Quienes pueden obtenerla?</h2>
+<p>La tarjeta cliente " Grupo Autoescuelas El Pilar " la pueden obtener los clientes de todas y cada una de las empresas que conforman el grupo. En el caso de los clientes del Grupo Autoescuelas El Pilar la podrán obtener sus clientes relacionados a los permisos profesionales, cursos y certificados profesionales.</p>
+<h2>¿Dónde la puedo conseguir?</h2>
+<p>La tarjeta cliente " Grupo Autoescuelas El Pilar " la puedes conseguir acreditando que eres cliente de cualquier empresa que conforma el grupo formado en cualquier establecimiento del Grupo Autoescuelas El Pilar. El tiempo aproximado de entrega será de unos quince días.</p>
+<h2>¿Qué debo hacer ante cualquier problema con el uso de la tarjeta cliente, pérdida o robo?</h2>
+<p>Si posees la tarjeta cliente " Grupo Autoescuelas El Pilar " y tienes cualquier problema con su uso háznoslo constar en el tiempo más breve posible poniéndote en contacto con nosotros mediante el correo electrónico antonio@autoescuelaselpilar.com o en el número de teléfono 674000551.</p>
+<p>En caso de pérdida o robo vuelve a solicitar la tarjeta en cualquiera de nuestros centros.</p>
+</div>
+</div>
+
+<div data-role="page" id="respuesta-contacto">
+<div data-role="header" data-position="fixed" data-theme="a">
+   	<h1>Respuesta</h1>
+    <a href="#" data-rel="back"  data-role="button" data-corners="false" data-theme="f" data-shadow="false" class="ui-btn-right"><img src="js/images/btn-volver.png" height="32px"/></a>
+ 	
+    </div>
+<div data-role="content" data-iscroll>
+<h2 style="padding-top:30px">Error de servidor</h2>
+<p>No hemos podido procesar correctamente su petición. El error puede deberse a un fallo de conexión en su terminal o a operaciones de mantenimiento en nuestro servidor</p>
+<p>Vuelva a intentarlo transcurridos unos minutos</p>
+</div>
+<div data-role="popup" id="fallo_campo" class="ui-content" data-theme="a">
+  <p>No puede dejar campos vacíos</p>
+</div>
+</div>
+-->
+
+
+</body>
+</html>

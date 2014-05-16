@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*CSS SLIDESHOW*/
+
+
+
+.home-icon{
+	height: 40px;
+      width: 40px;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: auto 100%;
+      border-radius: 5px;
+	  background-color:#FFF;
+	 
+	  
+}
+li.comp .icon{
+	height: 80px;
+      width: 80px;
+}
+
+li.comp .icon img{
+width:100%;
+height:auto;	
+}
+.home-icon.cursos{
+	background-image:url(images/icono-cursos-home.png);
+}
+.home-icon.permisos{
+	background-image:url(images/icono-permisos-home.png);
+}
+
+.home-icon.avisos{
+	background-image:url(images/icono-radio-home.png);
+}
+
+.home-icon.galeria{
+	background-image:url(images/icono-galeria-home.png);
+}
+.home-icon.clientes{
+	background-image:url(images/icono-cliente-home.png);
+}
+.home-icon.tests{
+	background-image:url(images/btn-tests.png);
+}
+.home-icon.contacto{
+	background-image:url(images/icon-contacto-home.png);
+}
+
+.item_desc{
+display:none;	
+}
+.more-button{
+	border: solid;
+	border-color: #FFF;
+	border-width: 4px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	transition: all 0.3s ease-out;
+	background-image: url(ajax-loader.gif);
+	background-repeat: no-repeat;
+	background-position: center -50px;
+	overflow:hidden;
+}
+.more-button.loading{
+	background-position: center center;
+	font-size:0px;
+}
+
