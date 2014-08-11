@@ -12,7 +12,9 @@
 <!--<link href="js/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css">-->
 <link href="js/style.css" rel="stylesheet" type="text/css">
 
- 
+<script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD6eWeBii2iH-6lRjM9lXwvt6dcVaTmmKM&sensor=true">
+    </script> 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-1.4.0.js"></script>
@@ -23,7 +25,23 @@
  <script src="js/iscroll.js"></script>
     <script src="js/jquery.mobile.iscrollview.js"></script>
 <script type="text/javascript" src="js/funciones.js"></script>
+<script type="text/javascript">
+      function initializeMap() {
+		  var height = $(window).height();
+                var width = $(window).width();
 
+                $("#mapa_google").height(height);
+                $("#mapa_google").width(width);
+		  console.log("Estamos inicializando el mapa");
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("mapa_google"),
+            mapOptions);
+      }
+    </script>
 <script type="text/javascript">
 //youtube URL (mandatory) -----------------------------
  var youTubeURL = "https://www.youtube.com/user/AUTOESCUELASELPILAR"; 
@@ -40,7 +58,7 @@ function onDeviceReady() {
 	navigator.splashscreen.hide();
 		dispositivo=true;	
 	//console.log("El dispositivo ya está listo");
-$("[data-role=panel]").panel().enhanceWithin();
+	$("[data-role=panel]").panel().enhanceWithin();
 	obtenerImagenes();
 		//obtener imagenes portada
 		$("#home-btn-tests").animate({opacity:1},'slow');
@@ -54,14 +72,31 @@ $("[data-role=panel]").panel().enhanceWithin();
         $('#maincursos').trigger('create');
 		$('#permisos').page();
 		$('#contacto').trigger('create');
-		$('#content-viewer [data-role="content"]').iscrollview();	
+		$('#content-viewer [data-role="content"]').iscrollview();
+	
 		
 }
 
 jQuery(document).ready(function(){ 
 console.log("El documento ya está listo");
-
-	
+/*dispositivo=true;	
+	//console.log("El dispositivo ya está listo");
+	$("[data-role=panel]").panel().enhanceWithin();
+	obtenerImagenes();
+		//obtener imagenes portada
+		$("#home-btn-tests").animate({opacity:1},'slow');
+		obtenerGaleria();
+		obtenerCursos(true);
+		obtenerPermisos(true);
+		obtenerCertificados(true);
+		obtenerIntensivos(true);
+		obtenerAvisos(true);
+        obtenerClientes();
+        $('#maincursos').trigger('create');
+		$('#permisos').page();
+		$('#contacto').trigger('create');
+		$('#content-viewer [data-role="content"]').iscrollview();*/
+	initializeMap();
 		
 		
 });
@@ -97,7 +132,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
             <tr>
                 
                 <td  width="50%"><a href="#tests"  data-transition="flip" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/btn-tests.png"/></a>Tests</td>
-                
+                <td  width="50%"><a href="#mapa"  data-transition="flip" ><div class="ui-elpilar-loading"></div><img style="width:70%" width="70%" src="js/images/icono-mapa-home.png"/></a>Localización</td>
             </tr>
         </table>
 
@@ -329,6 +364,20 @@ document.addEventListener("deviceready", onDeviceReady, false);
                 
             </ul>
         </div>
+        
+    </div>
+</div>
+<div data-role="page" id="mapa" style="width:100%;height:100%;padding:0">
+    <div data-role="header" data-position="fixed" data-theme="a">
+        <h1>Mapa</h1>
+        <a href="#menuelpilar" data-role="button" data-corners="false" data-theme="f" data-shadow="false"><img src="js/images/btn-menu.png" height="36px"/></a>
+        
+        
+    </div>
+
+    <div id="container" style="width:100%;height:100%;padding:0" data-role="content">
+    <div id="mapa_google"></div>
+    	
         
     </div>
 </div>
