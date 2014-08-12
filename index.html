@@ -26,7 +26,8 @@
     <script src="js/jquery.mobile.iscrollview.js"></script>
 <script type="text/javascript" src="js/funciones.js"></script>
 <script type="text/javascript">
-      function initializeMap() {
+      $(document).on('pageinit', '#mapa',function(e,data){
+		  console.log("CARGAMOS EL MAPA");
 		  var height = $(window).height();
                 var width = $(window).width();
 
@@ -34,13 +35,19 @@
                 $("#mapa_google").width(width);
 		  console.log("Estamos inicializando el mapa");
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
+          center: new google.maps.LatLng(40.9634385,-5.6692121),
+          zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("mapa_google"),
             mapOptions);
-      }
+			
+			var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(40.9726285,-5.6643985),
+      map: map,
+      title: 'AVENIDA PORTUGAL'
+  });
+      })
     </script>
 <script type="text/javascript">
 //youtube URL (mandatory) -----------------------------
@@ -95,12 +102,11 @@ console.log("El documento ya está listo");
         $('#maincursos').trigger('create');
 		$('#permisos').page();
 		$('#contacto').trigger('create');
-		$('#content-viewer [data-role="content"]').iscrollview();*/
-	initializeMap();
+		$('#content-viewer [data-role="content"]').iscrollview();
+	//initializeMap();*/
 		
 		
 });
-
 document.addEventListener("deviceready", onDeviceReady, false);
 </script>
 </head>
