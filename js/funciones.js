@@ -837,3 +837,57 @@ $(document).delegate('#lista_clientes li','tap',function(){
 
                      
                      })
+					 
+var marcadores=[[40.9726285,-5.6643985,'AVENIDA PORTUGAL'],
+[40.9673018,-5.6581992,'PASEO CANALEJAS'],
+[40.9687543,-5.6475124,'GLORIETA DEL ROLLO'],
+[41.081858,-5.695815,'PISTAS CALZADA'],
+[40.99424,-5.6658663,'PISTAS HELMANTICO'],
+[41.0093329,-5.6490374,'VILLARES DE LA REINA'],
+[40.9986347,-5.6955018,'VILLAMAYOR DE ARMUÑA']];					 
+
+
+var infoMarkers=new Array();
+					 
+function mapaInit(){
+	
+	var infoWindow=new google.maps.InfoWindow();
+	 var height = $(window).height();
+                var width = $(window).width();
+
+                $("#mapa_google").height(height);
+                $("#mapa_google").width(width);
+		  console.log("Estamos inicializando el mapa");
+        var mapOptions = {
+          center: new google.maps.LatLng(40.9634385,-5.6692121),
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("mapa_google"),
+            mapOptions);
+		console.log("El contenido de los marcadores es "+marcadores);
+		for(var m in marcadores){
+			
+			mi=parseInt(m)+10;
+			console.log("Añdimos el marcador "+mi);
+		var marker=new google.maps.Marker({position:new google.maps.LatLng(marcadores[m][0],marcadores[m][1]),map:map,title:marcadores[m][2],zIndex:mi});
+		
+  
+  google.maps.event.addListener(marker, 'click', (function(marker) {  
+           return function() {  
+               var content ='<div id="content"><h1>'+ marker.getTitle()+'</h1><a href="http://maps.apple.com/?daddr='+marker.getPosition().lat()+','+marker.getPosition().lng()+'" class="external_link">Como llegar</a></div>';  
+              infoWindow.setContent(content);  
+               infoWindow.open(map, marker);  
+			   //window.open('http://maps.apple.com/?ll='+marker.getPosition().lat()+','+marker.getPosition().lng(), "_system");
+           }  
+         })(marker));  
+  
+	}	
+			/*var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(40.9726285,-5.6643985),
+      map: map,
+      title: 'AVENIDA PORTUGAL'
+  });*/
+}
+					 
+					 

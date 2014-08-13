@@ -28,25 +28,7 @@
 <script type="text/javascript">
       $(document).on('pageinit', '#mapa',function(e,data){
 		  console.log("CARGAMOS EL MAPA");
-		  var height = $(window).height();
-                var width = $(window).width();
-
-                $("#mapa_google").height(height);
-                $("#mapa_google").width(width);
-		  console.log("Estamos inicializando el mapa");
-        var mapOptions = {
-          center: new google.maps.LatLng(40.9634385,-5.6692121),
-          zoom: 12,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("mapa_google"),
-            mapOptions);
-			
-			var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(40.9726285,-5.6643985),
-      map: map,
-      title: 'AVENIDA PORTUGAL'
-  });
+		 mapaInit();
       })
     </script>
 <script type="text/javascript">
