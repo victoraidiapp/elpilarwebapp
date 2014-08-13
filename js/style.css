@@ -308,14 +308,31 @@ a.avis{
 	font-weight: bold;
 	text-decoration: underline;
 }
-.direccion{
-	margin-bottom:10px;
-	margin-left:10px;
-	font-size:10px;
+.ver .titulo {
+color: #90bc00;
+margin-top: 10px;
+margin-left: 0px;
+display: block;
+font-weight: bold;
+text-decoration: underline;
+font-size: 1.2em;
 }
-.time{
-	background-color: #999;	
-	color:#000;
+.direccion {
+margin-bottom: 10px;
+margin-left: 10px;
+font-size: 12px;
+padding-top: 10px;
+display: block;
+}
+
+
+.time {
+/* background-color: #999; */
+color: #000;
+padding: 0px!important;
+margin-bottom: 0px!important;
+font-size: 10px;
+margin-left: 10px;
 }
 .contenidos{
 	color:#000;
@@ -517,4 +534,12 @@ top: 17px;
 width:100%;
 height:100%;
 padding:0;	
+}
+a.howToGo{
+	background-color: #90BC00;
+padding: 5px;
+border-radius: 4px;
+margin-left: 10px;
+text-decoration: none;
+color: #FFF;
 }

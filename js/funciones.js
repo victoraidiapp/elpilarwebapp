@@ -520,12 +520,16 @@ function obtenerAvisos(firstTime) {
 							var myhora=hora+':'+minuto;
 							var myhorafin=horafin+':'+minutofin;
 							var anofin=mydatefin.getFullYear();
+							var gotoSede="";
+							if(misintensivos[intensivo].direccion!=""){
+							gotoSede='<a class="howToGo external_link" href="http://maps.apple.com/?daddr='+misintensivos[intensivo].direccion+'">Cómo llegar</a>';	
+							}
 							jQuery("#intensivillos").append(
 							'<div class="intensivillos">'
 							+'<div class="date"><span class="month">'+mesn+'</span><span class="day">'+dia+'</span><span class="weekday">'+weekday+'</span></div>'
                	             +'<div class="eventos popupp">'
-							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span></div>'
-						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">'+misintensivos[intensivo].Lugar+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>").replace(/\<a/g,'<a class="external_link"')+'</div></div></div>'
+							 +'<span class="hora">'+myhora+'</span><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">Lugar: '+misintensivos[intensivo].Lugar+'</span></div>'
+						 +'<div id="'+misintensivos[intensivo].ID+'" class="verpopup no_visible"><div class="ver"><span class="titulo">'+misintensivos[intensivo].post_title+'</span><span class="direccion">Lugar: '+misintensivos[intensivo].Lugar+gotoSede+'</span><div class="time">'+mesn+' '+dia+'@'+myhora+' – '+diafin+' '+mesnfin+','+anofin+' @ '+myhorafin+'</div><div class="ai1ec-event-avatar  ai1ec-post_thumbnail ai1ec-portrait"><img src="'+misintensivos[intensivo].imagen_evento+'"  width="220" height="300"/></div><div class="contenidos">'+misintensivos[intensivo].post_content.replace(/\n/g,"<br/>").replace(/\<a/g,'<a class="external_link"')+'</div></div></div>'
 							 +'</div>'); 
 							 
 					
