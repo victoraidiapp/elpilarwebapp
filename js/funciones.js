@@ -879,19 +879,33 @@ function mapaInit(){
   
   google.maps.event.addListener(marker, 'click', (function(marker) {  
            return function() {  
-               var content ='<div id="content"><h1>'+ marker.getTitle()+'</h1><a href="http://maps.apple.com/?daddr='+marker.getPosition().lat()+','+marker.getPosition().lng()+'" class="external_link">Como llegar</a></div>';  
+               var content='<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h2 id="firstHeading" class="firstHeading">'+ marker.getTitle()+'</h2>'+
+      '<div id="bodyContent">'+
+      '<p><a href="http://maps.apple.com/?daddr='+marker.getPosition().lat()+','+marker.getPosition().lng()+'" class="external_link howToGo">Como llegar</a></p>'+
+      '</div>'+
+      '</div>';
+			   //var content ='<div id="content"><h1>'+ marker.getTitle()+'</h1><a href="http://maps.apple.com/?daddr='+marker.getPosition().lat()+','+marker.getPosition().lng()+'" class="external_link">Como llegar</a></div>';  
               infoWindow.setContent(content);  
                infoWindow.open(map, marker);  
 			   //window.open('http://maps.apple.com/?ll='+marker.getPosition().lat()+','+marker.getPosition().lng(), "_system");
            }  
          })(marker));  
   
-	}	
+	}
+	setTimeout(redimensionarMapa(map),1000);
 			/*var marker = new google.maps.Marker({
       position: new google.maps.LatLng(40.9726285,-5.6643985),
       map: map,
       title: 'AVENIDA PORTUGAL'
   });*/
+}
+
+function redimensionarMapa(mapita){
+	console.log("Redimensionamos el mapa");
+	google.maps.event.trigger(mapita, 'resize');
 }
 					 
 					 
